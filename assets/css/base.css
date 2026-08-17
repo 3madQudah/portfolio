@@ -1,0 +1,59 @@
+/* ==========================================================================
+   base.css — CSS custom properties (theme variables), reset, typography,
+   buttons, and shared utilities. Loaded first: everything else depends on
+   the variables defined here.
+   ========================================================================== */
+
+:root{
+  --bg:#08090A;  --bg-elevated:#101312;  --text:#DCE4E0;  --text-muted:#7A8A82;
+  --accent:#3ED598;  --accent-soft:rgba(62,213,152,0.13);
+  --line:rgba(255,255,255,0.09);  --shadow:0 20px 60px rgba(0,0,0,0.45);
+}
+[data-theme="light"]{
+  --bg:#F0F2F0;  --bg-elevated:#FFFFFF;  --text:#0E1512;  --text-muted:#57645D;
+  --accent:#1C9A66;  --accent-soft:rgba(28,154,102,0.10);
+  --line:rgba(0,0,0,0.09);  --shadow:0 20px 50px rgba(10,20,15,0.08);
+}
+
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  -webkit-font-smoothing:antialiased;
+  transition: background .3s ease, color .3s ease;
+}
+a{ color:inherit; text-decoration:none; }
+button{ font:inherit; color:inherit; background:none; border:none; cursor:pointer; }
+ul{ margin:0; padding:0; list-style:none; }
+img,svg{ display:block; }
+
+:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:3px;
+  border-radius:4px;
+}
+
+.mono{ font-family:'JetBrains Mono',monospace; }
+
+/* ---------- Buttons ---------- */
+.btn{
+  font-family:'JetBrains Mono',monospace;
+  text-transform:uppercase;
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:.06em;
+  padding:13px 24px;
+  border-radius:10px;
+  cursor:pointer;
+  border:1px solid transparent;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
+  display:inline-flex; align-items:center; gap:8px;
+  white-space:nowrap;
+}
+.btn-solid{ background:var(--accent); color:var(--bg); }
+.btn-solid:hover{ transform:translateY(-3px); box-shadow:0 14px 26px var(--accent-soft); }
+.btn-outline{ background:transparent; color:var(--text); border-color:var(--line); }
+.btn-outline:hover{ border-color:var(--accent); color:var(--accent); }

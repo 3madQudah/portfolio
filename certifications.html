@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Certifications — Emad Hamza Al-Qudah</title>
+<meta name="description" content="Certifications earned by Emad Hamza Al-Qudah, Full-Stack AI Engineer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/layout.css">
+<link rel="stylesheet" href="assets/css/pages.css">
+<script src="assets/js/theme.js" defer></script>
+<script src="assets/js/nav.js" defer></script>
+<script src="assets/js/cert-modal.js" defer></script>
+</head>
+<body data-theme="dark">
+
+  <!-- NAVBAR: shared markup — keep this block in sync across index.html, projects.html, experience.html, certifications.html, skills.html -->
+  <nav class="navbar" aria-label="Primary">
+    <div class="nav-left">
+      <a class="logo" id="logoBtn" href="index.html" aria-label="Emad Hamza Al-Qudah — home">
+        <svg class="face face-happy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"/>
+          <circle cx="9" cy="10" r="1" fill="currentColor" stroke="none"/>
+          <circle cx="15" cy="10" r="1" fill="currentColor" stroke="none"/>
+          <path d="M8 14.5c1 1.3 2.4 2 4 2s3-.7 4-2"/>
+        </svg>
+        <svg class="face face-sad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"/>
+          <circle cx="9" cy="10" r="1" fill="currentColor" stroke="none"/>
+          <circle cx="15" cy="10" r="1" fill="currentColor" stroke="none"/>
+          <path d="M8 16c1-1.3 2.4-2 4-2s3 .7 4 2"/>
+        </svg>
+      </a>
+      <span class="logo-text">Emad Hamza</span>
+    </div>
+
+    <div class="nav-links">
+      <a href="projects.html" class="nav-link">Projects</a>
+      <a href="experience.html" class="nav-link">Experience</a>
+      <a href="certifications.html" class="nav-link" aria-current="page">Certifications</a>
+      <div class="dropdown-wrapper" id="moreWrapper">
+        <button class="nav-link dropdown-trigger" id="moreTrigger" aria-haspopup="true" aria-expanded="false">
+          More
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="dropdown-panel" id="morePanel" role="menu" aria-label="More">
+          <a href="skills.html" class="dropdown-item" role="menuitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+            Skills
+          </a>
+          <div class="dropdown-divider"></div>
+          <!-- resume file placeholder — add the real PDF at assets/resume.pdf -->
+          <span class="dropdown-label">Resume</span>
+          <a href="assets/Emad_AlQudah_AI_Engineer_CV.pdf" class="dropdown-item" target="_blank" rel="noopener" role="menuitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            Display
+          </a>
+          <a href="assets/Emad_AlQudah_AI_Engineer_CV.pdf" download="Emad_Hamza_Al-Qudah_Resume.pdf" class="dropdown-item" role="menuitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme" aria-pressed="false">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+
+      <div class="dropdown-wrapper" id="contactWrapper">
+        <button class="btn btn-solid" id="contactTrigger" aria-haspopup="true" aria-expanded="false">Contact</button>
+        <div class="dropdown-panel" id="contactPanel" role="menu" aria-label="Contact details">
+          <!-- placeholder contact details — replace with real values -->
+          <a href="tel:+962790145094" class="dropdown-item" role="menuitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +962 79 014 5094
+          </a>
+          <a href="mailto:qudahemad@yahoo.com" class="dropdown-item" role="menuitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            qudahemad@yahoo.com
+          </a>
+          <div class="dropdown-item static">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Amman, Jordan
+          </div>
+          <div class="dropdown-divider"></div>
+          <div class="social-row">
+            <a href="https://github.com/3madQudah" class="icon-link" target="_blank" rel="noopener" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/emadalqudah/" class="icon-link" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="page-hero">
+      <h1 class="cert-heading" aria-label="Certifications, 6 total">
+        <span class="cert-heading-title">Certifications<span class="cert-heading-dot">.</span></span>
+        <span class="cert-heading-count" aria-hidden="true">6</span>
+      </h1>
+      <p class="page-intro">Programs I've completed in machine learning, LLM engineering, and infrastructure — each one verifiable.</p>
+    </section>
+
+    <section class="cert-section" aria-label="Certifications">
+      <div class="cert-entries">
+
+        <article class="cert-entry">
+          <div class="cert-entry-text">
+            <div class="cert-issuer-row">
+              <span class="cert-issuer-circle" aria-hidden="true">HIC</span>
+              <span class="cert-issuer-info">
+                <span class="cert-issuer-name">The Hope International Company</span>
+                <span class="cert-issuer-type">Training Program</span>
+              </span>
+            </div>
+            <h2 class="cert-entry-title">Python – Machine Learning – AI</h2>
+            <p class="cert-entry-desc">A 60-hour applied program covering Python fundamentals, machine learning foundations and practical AI techniques.</p>
+            <div class="cert-entry-meta">
+              <div class="cert-meta-line">May — Aug 2026 · 60 Hours</div>
+            </div>
+          </div>
+          <button type="button" class="cert-entry-preview"
+            data-image="assets/certificates/certificate_Emad Hamza Al-Qudah.png"
+            data-label="Python – Machine Learning – AI certificate"
+            aria-label="View Python – Machine Learning – AI certificate">
+            <img src="assets/certificates/certificate_Emad Hamza Al-Qudah.png" alt="First page preview of the Python – Machine Learning – AI certificate from The Hope International Company" loading="lazy">
+          </button>
+        </article>
+
+        <article class="cert-entry cert-entry--reverse">
+          <div class="cert-entry-text">
+            <div class="cert-issuer-row">
+              <span class="cert-issuer-circle" aria-hidden="true">365</span>
+              <span class="cert-issuer-info">
+                <span class="cert-issuer-name">365 Data Science</span>
+                <span class="cert-issuer-type">Certificate of Achievement</span>
+              </span>
+            </div>
+            <h2 class="cert-entry-title">LLM Engineering in Practice with Streamlit and OpenAI</h2>
+            <p class="cert-entry-desc">Building and shipping LLM-powered applications end to end, wiring the OpenAI API into interactive Streamlit interfaces.</p>
+            <div class="cert-entry-meta">
+              <div class="cert-meta-line">Mar 2026 · 3.5 CPE Credits</div>
+              <div class="cert-meta-line">ID: CC-4961A3F635</div>
+            </div>
+          </div>
+          <button type="button" class="cert-entry-preview"
+            data-image="assets/certificates/CC-4961A3F635.png"
+            data-label="LLM Engineering in Practice with Streamlit and OpenAI certificate"
+            aria-label="View LLM Engineering in Practice with Streamlit and OpenAI certificate">
+            <img src="assets/certificates/CC-4961A3F635.png" alt="First page preview of the LLM Engineering in Practice with Streamlit and OpenAI certificate from 365 Data Science" loading="lazy">
+          </button>
+        </article>
+
+        <article class="cert-entry">
+          <div class="cert-entry-text">
+            <div class="cert-issuer-row">
+              <span class="cert-issuer-circle" aria-hidden="true">DKR</span>
+              <span class="cert-issuer-info">
+                <span class="cert-issuer-name">Docker · LinkedIn Learning</span>
+                <span class="cert-issuer-type">Professional Certificate</span>
+              </span>
+            </div>
+            <h2 class="cert-entry-title">Docker Foundations Professional Certificate</h2>
+            <p class="cert-entry-desc">Containerization fundamentals and the Docker product suite — images, containers, volumes, networking and Compose.</p>
+            <div class="cert-entry-meta">
+              <div class="cert-meta-line">Feb 2026 · 3h 42m</div>
+            </div>
+          </div>
+          <button type="button" class="cert-entry-preview"
+            data-image="assets/certificates/CertificateOfCompletion_Docker Foundations Professional Certificate.png"
+            data-label="Docker Foundations Professional Certificate"
+            aria-label="View Docker Foundations Professional Certificate">
+            <img src="assets/certificates/CertificateOfCompletion_Docker Foundations Professional Certificate.png" alt="First page preview of the Docker Foundations Professional Certificate" loading="lazy">
+          </button>
+        </article>
+
+        <article class="cert-entry cert-entry--reverse">
+          <div class="cert-entry-text">
+            <div class="cert-issuer-row">
+              <span class="cert-issuer-circle" aria-hidden="true">IBM</span>
+              <span class="cert-issuer-info">
+                <span class="cert-issuer-name">IBM</span>
+                <span class="cert-issuer-type">Professional Certificate · Coursera</span>
+              </span>
+            </div>
+            <h2 class="cert-entry-title">IBM AI Engineering</h2>
+            <p class="cert-entry-desc">Training, fine-tuning and deploying deep learning models including large language models — spanning Keras, PyTorch and TensorFlow, transfer learning for NLP, generative pre-trained transformers, and a capstone building a RAG application with LangChain.</p>
+            <div class="cert-entry-meta">
+              <div class="cert-meta-line">Jan 2026 · 13 Courses</div>
+            </div>
+            <a class="cert-verify-link" href="https://coursera.org/verify/professional-cert/FCRNY8S1DG2T" target="_blank" rel="noopener">Verify credential ↗</a>
+          </div>
+          <button type="button" class="cert-entry-preview"
+            data-image="assets/certificates/Coursera FCRNY8S1DG2T.png"
+            data-label="IBM AI Engineering certificate"
+            aria-label="View IBM AI Engineering certificate">
+            <img src="assets/certificates/Coursera FCRNY8S1DG2T.png" alt="First page preview of the IBM AI Engineering professional certificate" loading="lazy">
+          </button>
+        </article>
+
+        <article class="cert-entry">
+          <div class="cert-entry-text">
+            <div class="cert-issuer-row">
+              <span class="cert-issuer-circle" aria-hidden="true">STA</span>
+              <span class="cert-issuer-info">
+                <span class="cert-issuer-name">Stanford Online · DeepLearning.AI</span>
+                <span class="cert-issuer-type">Specialization · Coursera</span>
+              </span>
+            </div>
+            <h2 class="cert-entry-title">Machine Learning Specialization</h2>
+            <p class="cert-entry-desc">Supervised learning across regression, classification, neural networks and decision trees; unsupervised learning including clustering and anomaly detection; plus recommender systems and reinforcement learning. Taught by Andrew Ng.</p>
+            <div class="cert-entry-meta">
+              <div class="cert-meta-line">Apr 2024 · 3 Courses</div>
+              <div class="cert-meta-line">ID: 3TVUBWJG9RAN</div>
+            </div>
+          </div>
+          <button type="button" class="cert-entry-preview"
+            data-image="assets/certificates/Coursera 3TVUBWJG9RAN.png"
+            data-label="Machine Learning Specialization certificate"
+            aria-label="View Machine Learning Specialization certificate">
+            <img src="assets/certificates/Coursera 3TVUBWJG9RAN.png" alt="First page preview of the Machine Learning Specialization certificate from Stanford Online and DeepLearning.AI" loading="lazy">
+          </button>
+        </article>
+
+        <article class="cert-entry cert-entry--reverse">
+          <div class="cert-entry-text">
+            <div class="cert-issuer-row">
+              <span class="cert-issuer-circle" aria-hidden="true">BC</span>
+              <span class="cert-issuer-info">
+                <span class="cert-issuer-name">British Council</span>
+                <span class="cert-issuer-type">Certificate of Attendance</span>
+              </span>
+            </div>
+            <h2 class="cert-entry-title">MyClass General English — Level A2</h2>
+            <p class="cert-entry-desc">General English at CEFR Level A2, completed over six weeks of live classroom sessions.</p>
+            <div class="cert-entry-meta">
+              <div class="cert-meta-line">Feb 2024 · 9 Hours</div>
+            </div>
+          </div>
+          <button type="button" class="cert-entry-preview"
+            data-image="assets/certificates/Screenshot 2026-08-16 at 16.28.57.png"
+            data-label="MyClass General English — Level A2 certificate"
+            aria-label="View MyClass General English — Level A2 certificate">
+            <img src="assets/certificates/Screenshot 2026-08-16 at 16.28.57.png" alt="First page preview of the MyClass General English — Level A2 certificate from British Council" loading="lazy">
+          </button>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER: shared markup — keep this block in sync across index.html, projects.html, experience.html, certifications.html, skills.html -->
+  <footer class="footer">
+    <div class="footer-brand">
+      <div class="name">Emad Qudah</div>
+      <div class="role mono">AI ENGINEER</div>
+    </div>
+    <div class="footer-social">
+      <!-- placeholder social links — replace with real profiles -->
+      <a href="https://github.com/3madQudah" class="icon-link" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/emadalqudah/" class="icon-link" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a href="mailto:qudahemad@yahoo.com" class="icon-link" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </a>
+    </div>
+    <div class="footer-copy">© 2026 All Rights Reserved</div>
+  </footer>
+
+  <!-- CERT LIGHTBOX: single reusable full-viewport image viewer, populated via JS from each
+       .cert-entry-preview button's data-* attributes. PNG previews are not yet in
+       assets/certificates/ — the lightbox image will be blank/broken until they're added. -->
+  <div class="cert-lightbox" id="certLightbox" role="dialog" aria-modal="true" aria-label="Certificate preview">
+    <button type="button" class="cert-lightbox-close" id="certLightboxClose" aria-label="Close">×</button>
+    <img class="cert-lightbox-img" id="certLightboxImg" src="" alt="">
+  </div>
+</body>
+</html>

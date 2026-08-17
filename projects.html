@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Emad Hamza Al-Qudah</title>
+<meta name="description" content="Selected projects by Emad Hamza Al-Qudah, Full-Stack AI Engineer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/layout.css">
+<link rel="stylesheet" href="assets/css/pages.css">
+<script src="assets/js/theme.js" defer></script>
+<script src="assets/js/nav.js" defer></script>
+</head>
+<body data-theme="dark">
+
+  <!-- NAVBAR: shared markup — keep this block in sync across index.html, projects.html, experience.html, certifications.html, skills.html -->
+  <nav class="navbar" aria-label="Primary">
+    <div class="nav-left">
+      <a class="logo" id="logoBtn" href="index.html" aria-label="Emad Hamza Al-Qudah — home">
+        <svg class="face face-happy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"/>
+          <circle cx="9" cy="10" r="1" fill="currentColor" stroke="none"/>
+          <circle cx="15" cy="10" r="1" fill="currentColor" stroke="none"/>
+          <path d="M8 14.5c1 1.3 2.4 2 4 2s3-.7 4-2"/>
+        </svg>
+        <svg class="face face-sad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"/>
+          <circle cx="9" cy="10" r="1" fill="currentColor" stroke="none"/>
+          <circle cx="15" cy="10" r="1" fill="currentColor" stroke="none"/>
+          <path d="M8 16c1-1.3 2.4-2 4-2s3 .7 4 2"/>
+        </svg>
+      </a>
+      <span class="logo-text">Emad Hamza</span>
+    </div>
+
+    <div class="nav-links">
+      <a href="projects.html" class="nav-link" aria-current="page">Projects</a>
+      <a href="experience.html" class="nav-link">Experience</a>
+      <a href="certifications.html" class="nav-link">Certifications</a>
+      <div class="dropdown-wrapper" id="moreWrapper">
+        <button class="nav-link dropdown-trigger" id="moreTrigger" aria-haspopup="true" aria-expanded="false">
+          More
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="dropdown-panel" id="morePanel" role="menu" aria-label="More">
+          <a href="skills.html" class="dropdown-item" role="menuitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+            Skills
+          </a>
+          <div class="dropdown-divider"></div>
+          <!-- resume file placeholder — add the real PDF at assets/resume.pdf -->
+          <span class="dropdown-label">Resume</span>
+          <a href="assets/Emad_AlQudah_AI_Engineer_CV.pdf" class="dropdown-item" target="_blank" rel="noopener" role="menuitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            Display
+          </a>
+          <a href="assets/Emad_AlQudah_AI_Engineer_CV.pdf" download="Emad_Hamza_Al-Qudah_Resume.pdf" class="dropdown-item" role="menuitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme" aria-pressed="false">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+
+      <div class="dropdown-wrapper" id="contactWrapper">
+        <button class="btn btn-solid" id="contactTrigger" aria-haspopup="true" aria-expanded="false">Contact</button>
+        <div class="dropdown-panel" id="contactPanel" role="menu" aria-label="Contact details">
+          <!-- placeholder contact details — replace with real values -->
+          <a href="tel:+962790145094" class="dropdown-item" role="menuitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +962 79 014 5094
+          </a>
+          <a href="mailto:qudahemad@yahoo.com" class="dropdown-item" role="menuitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            qudahemad@yahoo.com
+          </a>
+          <div class="dropdown-item static">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Amman, Jordan
+          </div>
+          <div class="dropdown-divider"></div>
+          <div class="social-row">
+            <a href="https://github.com/3madQudah" class="icon-link" target="_blank" rel="noopener" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/emadalqudah/" class="icon-link" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="page-hero">
+      <h1 class="page-title">Projects</h1>
+      <p class="page-intro">A collection of my work in Machine Learning, RAG, AI and Data Science.</p>
+    </section>
+
+    <section class="proj-section" aria-label="Projects">
+      <div class="proj-filters" role="group" aria-label="Filter projects by category">
+        <button type="button" class="chip is-active" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" class="chip" data-filter="llm-rag" aria-pressed="false">LLM / RAG</button>
+        <button type="button" class="chip" data-filter="machine-learning" aria-pressed="false">Machine Learning</button>
+        <button type="button" class="chip" data-filter="healthcare-ai" aria-pressed="false">Healthcare AI</button>
+      </div>
+
+      <div class="proj-grid">
+
+        <article class="proj-card" data-category="llm-rag">
+          <span class="proj-kicker">LLM / RAG</span>
+          <h3 class="proj-title">ContextIQ</h3>
+          <p class="proj-desc">A full-stack RAG platform (FastAPI, React, LangChain) with hybrid FAISS + BM25 retrieval and multi-turn conversational memory with query rewriting — ingesting PDF, DOCX, CSV, TXT and Markdown. Extended with a natural-language-to-SQL interface for querying external databases (PostgreSQL, MySQL, SQLite), secured with JWT authentication and per-user data isolation.</p>
+          <div class="proj-tags">
+            <span class="proj-tag">RAG</span>
+            <span class="proj-tag">LLM</span>
+            <span class="proj-tag">FastAPI</span>
+            <span class="proj-tag">React</span>
+            <span class="proj-tag">LangChain</span>
+            <span class="proj-tag">Hybrid Search (BM25 + FAISS)</span>
+            <span class="proj-tag">NL-to-SQL</span>
+          </div>
+          <!-- No live deployment yet — add a "Live demo" .proj-link here once ContextIQ is deployed. -->
+          <div class="proj-links">
+            <a class="proj-link" href="https://github.com/3madQudah/contextiq" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+              Code
+            </a>
+          </div>
+        </article>
+
+        <article class="proj-card" data-category="healthcare-ai">
+          <div class="proj-kicker-row">
+            <span class="proj-kicker">Healthcare AI</span>
+            <span class="proj-badge">Graduation Project</span>
+          </div>
+          <h3 class="proj-title">MediCheck</h3>
+          <p class="proj-desc">A web platform that helps doctors and pharmacists identify a medicine's primary side-effect category — cardiovascular, neurological, gastrointestinal and others — using a trained classification model, alongside action class, therapeutic class and known substitutes.</p>
+          <div class="proj-tags">
+            <span class="proj-tag">Machine Learning</span>
+            <span class="proj-tag">Classification</span>
+            <span class="proj-tag">Healthcare</span>
+            <span class="proj-tag">Python</span>
+          </div>
+          <!-- No repo link yet — add a "Code" .proj-link here once the MediCheck GitHub repo is ready. -->
+        </article>
+
+        <!-- The three cards below (Salary Predictor, Customer Churn Prediction,
+             Mall Footfall Intelligence) were built during the Al-Raja/Zain-adjacent
+             training period referenced on the Experience page. -->
+        <article class="proj-card" data-category="machine-learning">
+          <span class="proj-kicker">Machine Learning</span>
+          <h3 class="proj-title">Salary Predictor</h3>
+          <p class="proj-desc">A LightGBM model trained on San Francisco's public salary dataset, served through a Flask API that predicts base pay from job title, year, overtime and benefits.</p>
+          <div class="proj-stat">
+            <span class="proj-stat-value">R² 0.886</span>
+            <span class="proj-stat-label">on held-out data</span>
+          </div>
+          <div class="proj-tags">
+            <span class="proj-tag">LightGBM</span>
+            <span class="proj-tag">Flask</span>
+            <span class="proj-tag">scikit-learn</span>
+            <span class="proj-tag">Python</span>
+          </div>
+          <div class="proj-links">
+            <a class="proj-link" href="https://github.com/3madQudah/salary-prediction-lightgbm" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+              Code
+            </a>
+            <a class="proj-link" href="https://salary-predictor-api-ab3e.onrender.com" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Live demo
+            </a>
+          </div>
+        </article>
+
+        <article class="proj-card" data-category="machine-learning">
+          <span class="proj-kicker">Machine Learning</span>
+          <h3 class="proj-title">Customer Churn Prediction</h3>
+          <p class="proj-desc">An interactive dashboard that scores customers for churn risk, returning a confidence score, risk level, and recommended retention actions alongside a per-customer summary.</p>
+          <div class="proj-tags">
+            <span class="proj-tag">scikit-learn</span>
+            <span class="proj-tag">Streamlit</span>
+            <span class="proj-tag">Plotly</span>
+            <span class="proj-tag">Python</span>
+          </div>
+          <div class="proj-links">
+            <a class="proj-link" href="https://github.com/3madQudah/customer-churn-prediction-dashboard" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+              Code
+            </a>
+            <a class="proj-link" href="https://customer-churn-predictions-dashboard.streamlit.app" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Live demo
+            </a>
+          </div>
+        </article>
+
+        <article class="proj-card" data-category="machine-learning">
+          <span class="proj-kicker">Machine Learning</span>
+          <h3 class="proj-title">Mall Footfall Intelligence</h3>
+          <p class="proj-desc">A forecasting dashboard that predicts hourly visitor counts across five malls up to 72 hours ahead, with an EDA view, live forecasting, and model-performance diagnostics.</p>
+          <div class="proj-stat">
+            <span class="proj-stat-value">R² 0.95</span>
+            <span class="proj-stat-label">forecast accuracy</span>
+          </div>
+          <div class="proj-tags">
+            <span class="proj-tag">Random Forest</span>
+            <span class="proj-tag">Streamlit</span>
+            <span class="proj-tag">Plotly</span>
+            <span class="proj-tag">scikit-learn</span>
+          </div>
+          <div class="proj-links">
+            <a class="proj-link" href="https://github.com/3madQudah/mall-footfall-intelligence" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+              Code
+            </a>
+            <a class="proj-link" href="https://mall-footfall-intelligence.streamlit.app" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Live demo
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER: shared markup — keep this block in sync across index.html, projects.html, experience.html, certifications.html, skills.html -->
+  <footer class="footer">
+    <div class="footer-brand">
+      <div class="name">Emad Qudah</div>
+      <div class="role mono"> AI ENGINEER</div>
+    </div>
+    <div class="footer-social">
+      <!-- placeholder social links — replace with real profiles -->
+      <a href="https://github.com/3madQudah" class="icon-link" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/emadalqudah/" class="icon-link" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a href="mailto:qudahemad@yahoo.com" class="icon-link" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </a>
+    </div>
+    <div class="footer-copy">© 2026 All Rights Reserved</div>
+  </footer>
+</body>
+</html>

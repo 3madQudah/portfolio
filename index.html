@@ -116,8 +116,37 @@
       </div>
 
       <div class="hero-visual">
-        <div class="waveform" id="waveform" aria-hidden="true"></div>
-        <div class="waveform-caption">Processing · Retrieving · Generating</div>
+        <svg class="lifecycle-svg" viewBox="0 0 320 320" width="100%" role="img" aria-labelledby="lifecycleTitle lifecycleDesc">
+          <title id="lifecycleTitle">AI engineering lifecycle diagram</title>
+          <desc id="lifecycleDesc">A continuous six-stage cycle, read clockwise: Data, Train, Eval, Deploy, Serve, and Monitor, looping back to Data.</desc>
+
+          <circle class="lifecycle-ring" cx="160" cy="160" r="108"/>
+
+          <g class="lifecycle-arc-group">
+            <path class="lifecycle-arc" d="M66.47,106 A108,108 0 0 1 160,52"/>
+          </g>
+
+          <g class="lifecycle-nodes">
+            <circle class="lifecycle-node" cx="160" cy="52" r="5.5" style="animation-delay:0s"/>
+            <circle class="lifecycle-node" cx="253.53" cy="106" r="5.5" style="animation-delay:-2.333s"/>
+            <circle class="lifecycle-node" cx="253.53" cy="214" r="5.5" style="animation-delay:-4.667s"/>
+            <circle class="lifecycle-node" cx="160" cy="268" r="5.5" style="animation-delay:-7s"/>
+            <circle class="lifecycle-node" cx="66.47" cy="214" r="5.5" style="animation-delay:-9.333s"/>
+            <circle class="lifecycle-node" cx="66.47" cy="106" r="5.5" style="animation-delay:-11.667s"/>
+          </g>
+
+          <g class="lifecycle-labels">
+            <text class="lifecycle-label" x="160" y="34" text-anchor="middle">DATA</text>
+            <text class="lifecycle-label" x="269.53" y="109" text-anchor="start">TRAIN</text>
+            <text class="lifecycle-label" x="269.53" y="217" text-anchor="start">EVAL</text>
+            <text class="lifecycle-label" x="160" y="290" text-anchor="middle">DEPLOY</text>
+            <text class="lifecycle-label" x="50.47" y="217" text-anchor="end">SERVE</text>
+            <text class="lifecycle-label" x="50.47" y="109" text-anchor="end">MONITOR</text>
+          </g>
+
+          <text class="lifecycle-center-title" x="160" y="156" text-anchor="middle">LIFECYCLE</text>
+          <text class="lifecycle-center-sub" x="160" y="172" text-anchor="middle">CONTINUOUS</text>
+        </svg>
       </div>
     </section>
 

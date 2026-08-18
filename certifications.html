@@ -14,6 +14,7 @@
 <script src="assets/js/theme.js" defer></script>
 <script src="assets/js/nav.js" defer></script>
 <script src="assets/js/cert-modal.js" defer></script>
+<script src="assets/js/section-nav.js" defer></script>
 </head>
 <body data-theme="dark">
 
@@ -102,6 +103,12 @@
     </div>
   </nav>
 
+  <!-- SECTION NAVIGATOR: mount point for the shared collapsible section
+       navigator (assets/js/section-nav.js). data-item-selector picks the
+       elements to observe/link (each MUST already have a stable id);
+       data-title-selector finds each item's display title within it. -->
+  <div id="sectionNav" data-page-label="Certifications" data-item-selector=".cert-entry" data-title-selector=".cert-entry-title"></div>
+
   <main>
     <section class="page-hero">
       <h1 class="cert-heading" aria-label="Certifications, 6 total">
@@ -114,7 +121,7 @@
     <section class="cert-section" aria-label="Certifications">
       <div class="cert-entries">
 
-        <article class="cert-entry">
+        <article class="cert-entry" id="cert-python-ml-ai">
           <div class="cert-entry-text">
             <div class="cert-issuer-row">
               <span class="cert-issuer-circle" aria-hidden="true">HIC</span>
@@ -137,7 +144,7 @@
           </button>
         </article>
 
-        <article class="cert-entry cert-entry--reverse">
+        <article class="cert-entry cert-entry--reverse" id="cert-llm-streamlit-openai">
           <div class="cert-entry-text">
             <div class="cert-issuer-row">
               <span class="cert-issuer-circle" aria-hidden="true">365</span>
@@ -161,7 +168,7 @@
           </button>
         </article>
 
-        <article class="cert-entry">
+        <article class="cert-entry" id="cert-docker-foundations">
           <div class="cert-entry-text">
             <div class="cert-issuer-row">
               <span class="cert-issuer-circle" aria-hidden="true">DKR</span>
@@ -184,7 +191,7 @@
           </button>
         </article>
 
-        <article class="cert-entry cert-entry--reverse">
+        <article class="cert-entry cert-entry--reverse" id="cert-ibm-ai-engineering">
           <div class="cert-entry-text">
             <div class="cert-issuer-row">
               <span class="cert-issuer-circle" aria-hidden="true">IBM</span>
@@ -208,7 +215,7 @@
           </button>
         </article>
 
-        <article class="cert-entry">
+        <article class="cert-entry" id="cert-ml-specialization">
           <div class="cert-entry-text">
             <div class="cert-issuer-row">
               <span class="cert-issuer-circle" aria-hidden="true">STA</span>
@@ -232,7 +239,7 @@
           </button>
         </article>
 
-        <article class="cert-entry cert-entry--reverse">
+        <article class="cert-entry cert-entry--reverse" id="cert-english-a2">
           <div class="cert-entry-text">
             <div class="cert-issuer-row">
               <span class="cert-issuer-circle" aria-hidden="true">BC</span>

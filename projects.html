@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="assets/css/pages.css">
 <script src="assets/js/theme.js" defer></script>
 <script src="assets/js/nav.js" defer></script>
+<script src="assets/js/section-nav.js" defer></script>
 </head>
 <body data-theme="dark">
 
@@ -101,6 +102,12 @@
     </div>
   </nav>
 
+  <!-- SECTION NAVIGATOR: mount point for the shared collapsible section
+       navigator (assets/js/section-nav.js). data-item-selector picks the
+       elements to observe/link (each MUST already have a stable id);
+       data-title-selector finds each item's display title within it. -->
+  <div id="sectionNav" data-page-label="Projects" data-item-selector=".proj-card.proj-feature" data-title-selector=".proj-feature-title"></div>
+
   <main>
     <section class="page-hero">
       <h1 class="page-title">Projects</h1>
@@ -117,118 +124,286 @@
 
       <div class="proj-grid">
 
-        <article class="proj-card" data-category="llm-rag">
-          <span class="proj-kicker">LLM / RAG</span>
-          <h3 class="proj-title">ContextIQ</h3>
-          <p class="proj-desc">A full-stack RAG platform (FastAPI, React, LangChain) with hybrid FAISS + BM25 retrieval and multi-turn conversational memory with query rewriting — ingesting PDF, DOCX, CSV, TXT and Markdown. Extended with a natural-language-to-SQL interface for querying external databases (PostgreSQL, MySQL, SQLite), secured with JWT authentication and per-user data isolation.</p>
-          <div class="proj-tags">
-            <span class="proj-tag">RAG</span>
-            <span class="proj-tag">LLM</span>
-            <span class="proj-tag">FastAPI</span>
-            <span class="proj-tag">React</span>
-            <span class="proj-tag">LangChain</span>
-            <span class="proj-tag">Hybrid Search (BM25 + FAISS)</span>
-            <span class="proj-tag">NL-to-SQL</span>
+        <!-- 1. ContextIQ -->
+        <article class="proj-card proj-feature" id="proj-contextiq" data-category="llm-rag">
+          <div class="proj-feature-copy">
+            <span class="proj-feature-eyebrow">Full-stack RAG platform</span>
+            <h3 class="proj-feature-title">ContextIQ</h3>
+            <p class="proj-feature-desc">Upload documents or connect a live database, then ask questions in plain English. Hybrid semantic and keyword search returns exact answers, and every response cites the file it came from.</p>
+            <!-- TODO: confirm real stack -->
+            <div class="proj-feature-tags">
+              <span class="proj-feature-tag">Python</span>
+              <span class="proj-feature-tag">FastAPI</span>
+              <span class="proj-feature-tag">pgvector</span>
+              <span class="proj-feature-tag">React</span>
+            </div>
+            <div class="proj-feature-actions">
+              <a class="proj-feature-btn proj-feature-btn--solid" href="https://contextiq-rho.vercel.app" target="_blank" rel="noopener">Live demo</a>
+              <a class="proj-feature-btn proj-feature-btn--outline" href="https://github.com/3madQudah/contextiq" target="_blank" rel="noopener">Source code</a>
+            </div>
           </div>
-          <!-- No live deployment yet — add a "Live demo" .proj-link here once ContextIQ is deployed. -->
-          <div class="proj-links">
-            <a class="proj-link" href="https://github.com/3madQudah/contextiq" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
-              Code
-            </a>
+
+          <div class="proj-feature-art">
+            <svg class="proj-feature-svg" viewBox="0 0 300 200" width="100%" role="img" aria-labelledby="ciqArtTitle ciqArtDesc">
+              <title id="ciqArtTitle">ContextIQ retrieval diagram</title>
+              <desc id="ciqArtDesc">Six source file formats — DOCX, PDF, MD, TXT, CSV, and SQL DB — feed into a central RAG engine, which produces an answer panel with citations.</desc>
+
+              <!-- Cubic beziers with horizontal control points at both ends (control
+                   point shares its endpoint's y), so each curve leaves its chip flat
+                   and arrives at the circle flat instead of converging at a sharp
+                   angle. Endpoints still sit 2px outside the r=26 RAG circle
+                   (r_eff=28), on the line from each chip toward the circle centre. -->
+              <g class="proj-art-connectors">
+                <path class="proj-art-connector" d="M74,15 C88.8,15 88.8,74.9 103.6,74.9" fill="none" stroke="currentColor"/>
+                <path class="proj-art-connector" d="M74,49 C86.1,49 86.1,78.4 98.2,78.4" fill="none" stroke="currentColor"/>
+                <path class="proj-art-connector" d="M74,83 C82.03,83 82.03,89.5 90.05,89.5" fill="none" stroke="currentColor"/>
+                <path class="proj-art-connector" d="M74,117 C82.03,117 82.03,110.5 90.05,110.5" fill="none" stroke="currentColor"/>
+                <path class="proj-art-connector" d="M74,151 C86.1,151 86.1,121.6 98.2,121.6" fill="none" stroke="currentColor"/>
+                <path class="proj-art-connector" d="M74,185 C88.8,185 88.8,125.1 103.6,125.1" fill="none" stroke="currentColor"/>
+              </g>
+
+              <g>
+                <rect class="proj-art-chip" x="6" y="4" width="68" height="22" rx="4"/>
+                <text class="proj-art-chip-label" x="40" y="15" text-anchor="middle" dominant-baseline="central">DOCX</text>
+                <rect class="proj-art-chip" x="6" y="38" width="68" height="22" rx="4"/>
+                <text class="proj-art-chip-label" x="40" y="49" text-anchor="middle" dominant-baseline="central">PDF</text>
+                <rect class="proj-art-chip" x="6" y="72" width="68" height="22" rx="4"/>
+                <text class="proj-art-chip-label" x="40" y="83" text-anchor="middle" dominant-baseline="central">MD</text>
+                <rect class="proj-art-chip" x="6" y="106" width="68" height="22" rx="4"/>
+                <text class="proj-art-chip-label" x="40" y="117" text-anchor="middle" dominant-baseline="central">TXT</text>
+                <rect class="proj-art-chip" x="6" y="140" width="68" height="22" rx="4"/>
+                <text class="proj-art-chip-label" x="40" y="151" text-anchor="middle" dominant-baseline="central">CSV</text>
+                <rect class="proj-art-chip" x="6" y="174" width="68" height="22" rx="4"/>
+                <text class="proj-art-chip-label" x="40" y="185" text-anchor="middle" dominant-baseline="central">SQL DB</text>
+              </g>
+
+              <circle class="proj-art-node" cx="116" cy="100" r="26" stroke="currentColor"/>
+              <text class="proj-art-node-label" x="116" y="100" text-anchor="middle" dominant-baseline="central" fill="currentColor">RAG</text>
+
+              <line class="proj-art-arrow" x1="144" y1="100" x2="162" y2="100" stroke="currentColor" fill="none"/>
+              <polygon class="proj-art-arrowhead" points="160,94 170,100 160,106" fill="currentColor"/>
+
+              <rect class="proj-art-answer-panel" x="182" y="74" width="110" height="52" rx="8" stroke="currentColor"/>
+              <text class="proj-art-answer-title" x="237" y="92" text-anchor="middle" dominant-baseline="central" fill="currentColor">Answer</text>
+              <text class="proj-art-muted-label" x="237" y="110" text-anchor="middle" dominant-baseline="central">+ citations</text>
+            </svg>
           </div>
         </article>
 
-        <article class="proj-card" data-category="healthcare-ai">
-          <div class="proj-kicker-row">
-            <span class="proj-kicker">Healthcare AI</span>
-            <span class="proj-badge">Graduation Project</span>
+        <!-- 2. Salary Predictor -->
+        <article class="proj-card proj-feature" id="proj-salary-predictor" data-category="machine-learning">
+          <div class="proj-feature-copy">
+            <span class="proj-feature-eyebrow">End-to-end ML pipeline</span>
+            <h3 class="proj-feature-title">Salary Predictor</h3>
+            <p class="proj-feature-desc">A full pipeline over 148,000 San Francisco payroll records: cleaning, smoothed target encoding for thousands of free-text job titles, gradient boosting, and a Flask API serving live predictions from a web form.</p>
+            <div class="proj-feature-tags">
+              <span class="proj-feature-tag">Python</span>
+              <span class="proj-feature-tag">LightGBM</span>
+              <span class="proj-feature-tag">Flask</span>
+              <span class="proj-feature-tag">Render</span>
+            </div>
+            <div class="proj-feature-actions">
+              <a class="proj-feature-btn proj-feature-btn--solid" href="https://salary-predictor-api-ab3e.onrender.com" target="_blank" rel="noopener">Live demo</a>
+              <a class="proj-feature-btn proj-feature-btn--outline" href="https://github.com/3madQudah/salary-prediction-lightgbm" target="_blank" rel="noopener">Source code</a>
+            </div>
           </div>
-          <h3 class="proj-title">MediCheck</h3>
-          <p class="proj-desc">A web platform that helps doctors and pharmacists identify a medicine's primary side-effect category — cardiovascular, neurological, gastrointestinal and others — using a trained classification model, alongside action class, therapeutic class and known substitutes.</p>
-          <div class="proj-tags">
-            <span class="proj-tag">Machine Learning</span>
-            <span class="proj-tag">Classification</span>
-            <span class="proj-tag">Healthcare</span>
-            <span class="proj-tag">Python</span>
-          </div>
-          <!-- No repo link yet — add a "Code" .proj-link here once the MediCheck GitHub repo is ready. -->
-        </article>
 
-        <!-- The three cards below (Salary Predictor, Customer Churn Prediction,
-             Mall Footfall Intelligence) were built during the Al-Raja/Zain-adjacent
-             training period referenced on the Experience page. -->
-        <article class="proj-card" data-category="machine-learning">
-          <span class="proj-kicker">Machine Learning</span>
-          <h3 class="proj-title">Salary Predictor</h3>
-          <p class="proj-desc">A LightGBM model trained on San Francisco's public salary dataset, served through a Flask API that predicts base pay from job title, year, overtime and benefits.</p>
-          <div class="proj-stat">
-            <span class="proj-stat-value">R² 0.886</span>
-            <span class="proj-stat-label">on held-out data</span>
-          </div>
-          <div class="proj-tags">
-            <span class="proj-tag">LightGBM</span>
-            <span class="proj-tag">Flask</span>
-            <span class="proj-tag">scikit-learn</span>
-            <span class="proj-tag">Python</span>
-          </div>
-          <div class="proj-links">
-            <a class="proj-link" href="https://github.com/3madQudah/salary-prediction-lightgbm" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
-              Code
-            </a>
-            <a class="proj-link" href="https://salary-predictor-api-ab3e.onrender.com" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              Live demo
-            </a>
-          </div>
-        </article>
+          <div class="proj-feature-art">
+            <svg class="proj-feature-svg" viewBox="0 0 300 200" width="100%" role="img" aria-labelledby="salArtTitle salArtDesc">
+              <title id="salArtTitle">Salary prediction scatter plot with trend line</title>
+              <desc id="salArtDesc">A scatter of salary data points trending upward, with a fitted trend line and one highlighted predicted value.</desc>
 
-        <article class="proj-card" data-category="machine-learning">
-          <span class="proj-kicker">Machine Learning</span>
-          <h3 class="proj-title">Customer Churn Prediction</h3>
-          <p class="proj-desc">An interactive dashboard that scores customers for churn risk, returning a confidence score, risk level, and recommended retention actions alongside a per-customer summary.</p>
-          <div class="proj-tags">
-            <span class="proj-tag">scikit-learn</span>
-            <span class="proj-tag">Streamlit</span>
-            <span class="proj-tag">Plotly</span>
-            <span class="proj-tag">Python</span>
-          </div>
-          <div class="proj-links">
-            <a class="proj-link" href="https://github.com/3madQudah/customer-churn-prediction-dashboard" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
-              Code
-            </a>
-            <a class="proj-link" href="https://customer-churn-predictions-dashboard.streamlit.app" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              Live demo
-            </a>
+              <line class="proj-art-axis" x1="40" y1="20" x2="40" y2="160"/>
+              <line class="proj-art-axis" x1="40" y1="160" x2="280" y2="160"/>
+
+              <g class="proj-art-dots">
+                <circle class="proj-art-dot" cx="51.5" cy="142.2" r="2.5"/>
+                <circle class="proj-art-dot" cx="75.5" cy="130.9" r="2.5"/>
+                <circle class="proj-art-dot" cx="90.7" cy="129.9" r="2.5"/>
+                <circle class="proj-art-dot" cx="98.7" cy="124.7" r="2.5"/>
+                <circle class="proj-art-dot" cx="115.7" cy="113.5" r="2.5"/>
+                <circle class="proj-art-dot" cx="133.9" cy="94.7" r="2.5"/>
+                <circle class="proj-art-dot" cx="158.5" cy="106.2" r="2.5"/>
+                <circle class="proj-art-dot" cx="170" cy="80.1" r="2.5"/>
+                <circle class="proj-art-dot" cx="197.5" cy="91.2" r="2.5"/>
+                <circle class="proj-art-dot" cx="214" cy="66.6" r="2.5"/>
+                <circle class="proj-art-dot" cx="239.5" cy="47.6" r="2.5"/>
+                <circle class="proj-art-dot" cx="254.7" cy="45.3" r="2.5"/>
+                <circle class="proj-art-dot" cx="257.9" cy="31.3" r="2.5"/>
+              </g>
+
+              <line class="proj-art-trend" x1="55" y1="152" x2="265" y2="42" stroke="currentColor" fill="none"/>
+              <circle class="proj-art-predicted-dot" cx="230" cy="60" r="5" fill="currentColor"/>
+              <text class="proj-art-muted-label" x="230" y="45" text-anchor="middle" dominant-baseline="central">predicted</text>
+
+              <text class="proj-art-muted-label" x="160" y="178" text-anchor="middle" dominant-baseline="central">Job title, year, pay components</text>
+            </svg>
           </div>
         </article>
 
-        <article class="proj-card" data-category="machine-learning">
-          <span class="proj-kicker">Machine Learning</span>
-          <h3 class="proj-title">Mall Footfall Intelligence</h3>
-          <p class="proj-desc">A forecasting dashboard that predicts hourly visitor counts across five malls up to 72 hours ahead, with an EDA view, live forecasting, and model-performance diagnostics.</p>
-          <div class="proj-stat">
-            <span class="proj-stat-value">R² 0.95</span>
-            <span class="proj-stat-label">forecast accuracy</span>
+        <!-- 3. MediCheck -->
+        <article class="proj-card proj-feature" id="proj-medicheck" data-category="healthcare-ai">
+          <div class="proj-feature-copy">
+            <span class="proj-feature-eyebrow">Drug information platform</span>
+            <h3 class="proj-feature-title">MediCheck</h3>
+            <p class="proj-feature-desc">Search a medicine by name and get its substitutes, usage, and a predicted side-effect category. A Flask API joins a MySQL drug database to a trained scikit-learn classifier, with autocomplete and search history in a vanilla JS front end.</p>
+            <div class="proj-feature-tags">
+              <span class="proj-feature-tag">Python</span>
+              <span class="proj-feature-tag">Flask</span>
+              <span class="proj-feature-tag">MySQL</span>
+              <span class="proj-feature-tag">scikit-learn</span>
+            </div>
+            <!-- TODO: Emad to add MediCheck case study URL/page -->
+            <!-- TODO: Emad to add MediCheck GitHub URL -->
+            <div class="proj-feature-actions">
+              <a class="proj-feature-btn proj-feature-btn--solid" href="#">Case study</a>
+              <a class="proj-feature-btn proj-feature-btn--outline" href="#">Source code</a>
+            </div>
           </div>
-          <div class="proj-tags">
-            <span class="proj-tag">Random Forest</span>
-            <span class="proj-tag">Streamlit</span>
-            <span class="proj-tag">Plotly</span>
-            <span class="proj-tag">scikit-learn</span>
+
+          <div class="proj-feature-art">
+            <svg class="proj-feature-svg" viewBox="0 0 300 200" width="100%" role="img" aria-labelledby="medArtTitle medArtDesc">
+              <title id="medArtTitle">MediCheck classification flow</title>
+              <desc id="medArtDesc">A medicine search for Ventolin flows into a classifier, which outputs a predicted side-effect category, Neuro., highlighted among five possible categories.</desc>
+
+              <rect class="proj-art-chip" x="40" y="10" width="220" height="28" rx="6"/>
+              <text class="proj-art-chip-label" x="52" y="24" text-anchor="start" dominant-baseline="central">Ventolin</text>
+
+              <line class="proj-art-arrow" x1="150" y1="40" x2="150" y2="52" stroke="currentColor" fill="none"/>
+              <polygon class="proj-art-arrowhead" points="144,50 150,59 156,50" fill="currentColor"/>
+
+              <!-- Classifier: styled exactly like the Neuro. chip below (same rx, accent
+                   border, chip fill) rather than a circle — "Classifier" is too wide for a
+                   node circle at this font size. -->
+              <rect class="proj-art-chip proj-art-chip--accent" x="102" y="67" width="96" height="26" rx="4" stroke="currentColor"/>
+              <text class="proj-art-chip-label proj-art-chip-label--accent" x="150" y="80" text-anchor="middle" dominant-baseline="central" fill="currentColor">Classifier</text>
+
+              <line class="proj-art-arrow" x1="150" y1="97" x2="150" y2="106" stroke="currentColor" fill="none"/>
+              <polygon class="proj-art-arrowhead" points="144,106 150,115 156,106" fill="currentColor"/>
+
+              <g>
+                <rect class="proj-art-chip" x="15" y="124" width="82" height="22" rx="4"/>
+                <text class="proj-art-chip-label proj-art-chip-label--muted" x="56" y="135" text-anchor="middle" dominant-baseline="central">Gastro.</text>
+
+                <rect class="proj-art-chip proj-art-chip--accent" x="109" y="124" width="82" height="22" rx="4" stroke="currentColor"/>
+                <text class="proj-art-chip-label proj-art-chip-label--accent" x="150" y="135" text-anchor="middle" dominant-baseline="central" fill="currentColor">Neuro.</text>
+
+                <rect class="proj-art-chip" x="203" y="124" width="82" height="22" rx="4"/>
+                <text class="proj-art-chip-label proj-art-chip-label--muted" x="244" y="135" text-anchor="middle" dominant-baseline="central">Skin</text>
+
+                <rect class="proj-art-chip" x="62" y="154" width="82" height="22" rx="4"/>
+                <text class="proj-art-chip-label proj-art-chip-label--muted" x="103" y="165" text-anchor="middle" dominant-baseline="central">Cardio.</text>
+
+                <rect class="proj-art-chip" x="156" y="154" width="82" height="22" rx="4"/>
+                <text class="proj-art-chip-label proj-art-chip-label--muted" x="197" y="165" text-anchor="middle" dominant-baseline="central">Musculo.</text>
+              </g>
+            </svg>
           </div>
-          <div class="proj-links">
-            <a class="proj-link" href="https://github.com/3madQudah/mall-footfall-intelligence" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
-              Code
-            </a>
-            <a class="proj-link" href="https://mall-footfall-intelligence.streamlit.app" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              Live demo
-            </a>
+        </article>
+
+        <!-- 4. Customer Churn Prediction -->
+        <article class="proj-card proj-feature" id="proj-churn-prediction" data-category="machine-learning">
+          <div class="proj-feature-copy">
+            <span class="proj-feature-eyebrow">Classification and dashboard</span>
+            <h3 class="proj-feature-title">Customer Churn Prediction</h3>
+            <p class="proj-feature-desc">Five models compared under grid search, with SMOTE applied inside each CV fold to avoid oversampling leakage. A soft-voting ensemble catches 78% of churners at 0.84 ROC-AUC, wrapped in a Streamlit dashboard that returns a retention action per customer.</p>
+            <div class="proj-feature-tags">
+              <span class="proj-feature-tag">scikit-learn</span>
+              <span class="proj-feature-tag">XGBoost</span>
+              <span class="proj-feature-tag">imbalanced-learn</span>
+              <span class="proj-feature-tag">Streamlit</span>
+            </div>
+            <div class="proj-feature-actions">
+              <a class="proj-feature-btn proj-feature-btn--solid" href="https://customer-churn-predictions-dashboard.streamlit.app" target="_blank" rel="noopener">Live demo</a>
+              <a class="proj-feature-btn proj-feature-btn--outline" href="https://github.com/3madQudah/customer-churn-prediction-dashboard" target="_blank" rel="noopener">Source code</a>
+            </div>
+          </div>
+
+          <div class="proj-feature-art">
+            <svg class="proj-feature-svg" viewBox="0 0 300 200" width="100%" role="img" aria-labelledby="churnArtTitle churnArtDesc">
+              <title id="churnArtTitle">Customer churn ensemble diagram</title>
+              <desc id="churnArtDesc">Four customer features feed a voting ensemble, producing an at-risk churn call, alongside a risk-score track bar with a decision threshold.</desc>
+
+              <!-- Endpoints stop at x=104, the rect's left edge, not its centre (148).
+                   Control points are 55% of the way from chip to that same x=104, so
+                   every curve's x(t) — a convex combination of start/control/end x —
+                   stays <= 104 for its whole length, never crossing into the rect. -->
+              <g class="proj-art-connectors">
+                <path class="proj-art-connector" d="M88,20 Q96.8,20 104,80" fill="none" stroke="currentColor"/>
+                <path class="proj-art-connector" d="M88,60 Q96.8,60 104,80" fill="none" stroke="currentColor"/>
+                <path class="proj-art-connector" d="M88,100 Q96.8,100 104,80" fill="none" stroke="currentColor"/>
+                <path class="proj-art-connector" d="M88,140 Q96.8,140 104,80" fill="none" stroke="currentColor"/>
+              </g>
+
+              <g>
+                <rect class="proj-art-chip" x="6" y="9" width="82" height="22" rx="4"/>
+                <text class="proj-art-chip-label" x="47" y="20" text-anchor="middle" dominant-baseline="central">Contract</text>
+                <rect class="proj-art-chip" x="6" y="49" width="82" height="22" rx="4"/>
+                <text class="proj-art-chip-label" x="47" y="60" text-anchor="middle" dominant-baseline="central">Tenure</text>
+                <rect class="proj-art-chip" x="6" y="89" width="82" height="22" rx="4"/>
+                <text class="proj-art-chip-label" x="47" y="100" text-anchor="middle" dominant-baseline="central">Charges</text>
+                <rect class="proj-art-chip" x="6" y="129" width="82" height="22" rx="4"/>
+                <text class="proj-art-chip-label" x="47" y="140" text-anchor="middle" dominant-baseline="central">Services</text>
+              </g>
+
+              <!-- Voting / ensemble: rounded rect, not a circle — two stacked
+                   <text> lines, since SVG text does not wrap. -->
+              <rect class="proj-art-node" x="104" y="57" width="88" height="46" rx="10" stroke="currentColor"/>
+              <text class="proj-art-node-label" x="148" y="73" text-anchor="middle" dominant-baseline="central" fill="currentColor">Voting</text>
+              <text class="proj-art-node-label" x="148" y="87" text-anchor="middle" dominant-baseline="central" fill="currentColor">ensemble</text>
+
+              <line class="proj-art-arrow" x1="196" y1="80" x2="206" y2="80" stroke="currentColor" fill="none"/>
+              <polygon class="proj-art-arrowhead" points="204,74 212,80 204,86" fill="currentColor"/>
+
+              <text class="proj-art-muted-label" x="218" y="64" text-anchor="start" dominant-baseline="central">Churn risk</text>
+              <text class="proj-art-risk-label" x="218" y="90" text-anchor="start" dominant-baseline="central" fill="currentColor">At risk</text>
+
+              <rect class="proj-art-track" x="20" y="176" width="260" height="10" rx="5"/>
+              <rect class="proj-art-track-fill" x="20" y="176" width="182" height="10" rx="5" fill="currentColor"/>
+              <text class="proj-art-muted-label" x="150" y="150" text-anchor="middle" dominant-baseline="central">threshold</text>
+              <line class="proj-art-divider" x1="150" y1="165" x2="150" y2="191"/>
+              <text class="proj-art-muted-label" x="20" y="193" text-anchor="start" dominant-baseline="central">0.0</text>
+              <text class="proj-art-muted-label" x="280" y="193" text-anchor="end" dominant-baseline="central">1.0</text>
+            </svg>
+          </div>
+        </article>
+
+        <!-- 5. Mall Footfall Intelligence -->
+        <article class="proj-card proj-feature" id="proj-mall-footfall" data-category="machine-learning">
+          <div class="proj-feature-copy">
+            <span class="proj-feature-eyebrow">Time series forecasting</span>
+            <h3 class="proj-feature-title">Mall Footfall Intelligence</h3>
+            <p class="proj-feature-desc">Nearly 900,000 raw visit records across five malls, aggregated into hourly series with cyclical time encodings and lag features. A Streamlit dashboard runs recursive multi-step forecasting up to 72 hours ahead alongside exploratory views.</p>
+            <div class="proj-feature-tags">
+              <span class="proj-feature-tag">pandas</span>
+              <span class="proj-feature-tag">scikit-learn</span>
+              <span class="proj-feature-tag">Streamlit</span>
+              <span class="proj-feature-tag">Plotly</span>
+            </div>
+            <div class="proj-feature-actions">
+              <a class="proj-feature-btn proj-feature-btn--solid" href="https://mall-footfall-intelligence.streamlit.app" target="_blank" rel="noopener">Live demo</a>
+              <a class="proj-feature-btn proj-feature-btn--outline" href="https://github.com/3madQudah/mall-footfall-intelligence" target="_blank" rel="noopener">Source code</a>
+            </div>
+          </div>
+
+          <div class="proj-feature-art">
+            <svg class="proj-feature-svg" viewBox="0 0 300 200" width="100%" role="img" aria-labelledby="mallArtTitle mallArtDesc">
+              <title id="mallArtTitle">Mall footfall observed-versus-forecast chart</title>
+              <desc id="mallArtDesc">An hourly visits line chart: a solid observed segment on the left transitions at a "now" divider into a dashed forecast segment on the right.</desc>
+
+              <line class="proj-art-axis" x1="40" y1="20" x2="40" y2="160"/>
+              <line class="proj-art-axis" x1="40" y1="160" x2="280" y2="160"/>
+              <text class="proj-art-muted-label" x="44" y="14" text-anchor="start" dominant-baseline="central">Visits per hour</text>
+
+              <polyline class="proj-art-zigzag" stroke="currentColor" fill="none" points="40,130 75,90 110,110 145,70 172,95"/>
+              <polyline class="proj-art-zigzag proj-art-zigzag--dashed" stroke="currentColor" fill="none" points="172,95 210,60 245,100 280,75"/>
+
+              <line class="proj-art-divider" x1="172" y1="20" x2="172" y2="160"/>
+              <text class="proj-art-muted-label" x="172" y="14" text-anchor="middle" dominant-baseline="central">now</text>
+
+              <text class="proj-art-muted-label" x="106" y="178" text-anchor="middle" dominant-baseline="central">observed</text>
+              <text class="proj-art-muted-label" x="226" y="178" text-anchor="middle" dominant-baseline="central">forecast</text>
+            </svg>
           </div>
         </article>
 

@@ -14,6 +14,7 @@
 <script src="assets/js/theme.js" defer></script>
 <script src="assets/js/nav.js" defer></script>
 <script src="assets/js/cert-modal.js" defer></script>
+<script src="assets/js/section-nav.js" defer></script>
 </head>
 <body data-theme="dark">
 
@@ -102,6 +103,12 @@
     </div>
   </nav>
 
+  <!-- SECTION NAVIGATOR: mount point for the shared collapsible section
+       navigator (assets/js/section-nav.js). data-item-selector picks the
+       elements to observe/link (each MUST already have a stable id);
+       data-title-selector finds each item's display title within it. -->
+  <div id="sectionNav" data-page-label="Experience" data-item-selector=".tl-entry" data-title-selector=".tl-role"></div>
+
   <main>
     <section class="page-hero">
       <h1 class="page-title">Experience</h1>
@@ -111,7 +118,7 @@
     <section class="tl-section" aria-label="Experience timeline">
       <div class="tl">
 
-        <div class="tl-entry">
+        <div class="tl-entry" id="exp-hope-international">
           <span class="tl-dot" aria-hidden="true"></span>
           <div class="tl-card">
             <div class="tl-card-top">
@@ -154,7 +161,7 @@
           </div>
         </div>
 
-        <div class="tl-entry">
+        <div class="tl-entry" id="exp-zain-jordan">
           <span class="tl-dot" aria-hidden="true"></span>
           <div class="tl-card">
             <div class="tl-card-top">

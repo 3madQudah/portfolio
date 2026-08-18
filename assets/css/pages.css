@@ -835,7 +835,7 @@
   color:var(--accent);
 }
 
-/* ---------- Projects: grid & cards ---------- */
+/* ---------- Projects: grid & card shell ---------- */
 .proj-grid{
   display:grid;
   grid-template-columns:1fr;
@@ -854,84 +854,316 @@
   transform:translateY(-4px);
   box-shadow:var(--shadow);
 }
-.proj-kicker{
+
+/* ==========================================================================
+   Featured project card (.proj-feature) — the single shared two-column
+   component used for all five project cards. Layered on top of .proj-card
+   (kept on the same <article>, alongside data-category, so the existing
+   filter-chip JS in nav.js — which selects .proj-card and reads
+   data-category — keeps working) rather than a standalone component.
+   ========================================================================== */
+.proj-feature{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:28px;
+  padding:28px;
+  border-radius:12px;
+}
+.proj-feature-copy{ flex:1 1 300px; }
+
+.proj-feature-eyebrow{
   display:block;
   font-family:'JetBrains Mono',monospace;
-  font-size:10.5px;
-  text-transform:uppercase;
-  letter-spacing:.12em;
+  font-size:11px;
+  letter-spacing:1.4px;
   color:var(--accent);
 }
-.proj-kicker-row{
-  display:flex;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:8px;
-}
-.proj-kicker-row .proj-kicker{ margin:0; }
-.proj-badge{
-  font-family:'JetBrains Mono',monospace;
-  font-size:10.5px;
-  text-transform:uppercase;
-  letter-spacing:.12em;
-  color:var(--text-muted);
-  border:1px solid var(--text-muted);
-  border-radius:999px;
-  padding:2px 9px;
-}
-.proj-title{
+.proj-feature-title{
   font-family:'Fraunces',serif;
   font-weight:500;
-  font-size:21px;
+  font-size:28px;
   color:var(--text);
   margin:10px 0 0;
 }
-.proj-desc{
-  font-size:14.5px;
+.proj-feature-desc{
+  font-size:14px;
   line-height:1.65;
   color:var(--text-muted);
-  margin:10px 0 0;
+  margin:12px 0 0;
 }
-.proj-stat{
-  display:flex;
-  align-items:baseline;
-  gap:6px;
-  margin-top:12px;
-  font-family:'JetBrains Mono',monospace;
-  font-size:12px;
-}
-.proj-stat-value{ color:var(--accent); font-weight:700; }
-.proj-stat-label{ color:var(--text-muted); }
-.proj-tags{
+.proj-feature-tags{
   display:flex;
   flex-wrap:wrap;
-  gap:6px;
+  gap:8px;
   margin-top:16px;
 }
-.proj-tag{
+.proj-feature-tag{
   font-family:'JetBrains Mono',monospace;
-  font-size:10.5px;
+  font-size:11px;
   color:var(--text-muted);
   border:1px solid var(--line);
-  border-radius:999px;
+  border-radius:4px;
   padding:4px 10px;
 }
-.proj-links{
+.proj-feature-actions{
   display:flex;
   flex-wrap:wrap;
-  gap:18px;
-  margin-top:18px;
+  gap:12px;
+  margin-top:20px;
 }
-.proj-link{
+.proj-feature-btn{
   display:inline-flex;
   align-items:center;
-  gap:6px;
   font-family:'JetBrains Mono',monospace;
-  font-size:11.5px;
-  text-transform:uppercase;
-  letter-spacing:.05em;
-  color:var(--text-muted);
-  transition:color .2s ease;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.04em;
+  padding:10px 16px;
+  border-radius:6px;
+  border:1px solid transparent;
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease, color .2s ease;
 }
-.proj-link svg{ width:14px; height:14px; }
-.proj-link:hover, .proj-link:focus-visible{ color:var(--accent); }
+.proj-feature-btn--solid{ background:var(--accent); color:var(--bg); }
+.proj-feature-btn--solid:hover{ transform:translateY(-2px); box-shadow:0 10px 20px var(--accent-soft); }
+.proj-feature-btn--outline{ background:transparent; color:var(--text-muted); border-color:var(--line); }
+.proj-feature-btn--outline:hover{ color:var(--text); border-color:var(--accent); }
+
+/* ---------- Featured project card: key-art SVG shell ---------- */
+.proj-feature-art{
+  flex:0 1 260px;
+  min-width:220px;
+  color:var(--accent); /* accent-colored SVG parts use stroke/fill="currentColor" to inherit this */
+}
+.proj-feature-svg{ width:100%; height:auto; display:block; }
+
+/* ---------- Key-art SVG: shared vocabulary, reused across all five cards ---------- */
+.proj-art-chip{
+  fill:var(--bg-elevated);
+  stroke:var(--line);
+  stroke-width:1;
+}
+.proj-art-chip--accent{ stroke:var(--accent); }
+.proj-art-chip-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  fill:var(--text);
+}
+.proj-art-chip-label--muted{ fill:var(--text-muted); }
+.proj-art-chip-label--accent{ fill:var(--accent); }
+.proj-art-node{
+  fill:var(--accent-soft);
+  stroke-width:1.5;
+}
+.proj-art-node-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+}
+.proj-art-connector{
+  fill:none;
+  stroke:currentColor; /* was missing — with no stroke color AND fill:none, connectors had nothing to paint at all */
+  stroke-width:1;
+  opacity:.45;
+}
+.proj-art-muted-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  fill:var(--text-muted);
+}
+
+/* ---------- Key-art SVG: pieces shared by 2+ cards, same visual language ---------- */
+.proj-art-axis{ stroke:var(--line); stroke-width:1; }
+.proj-art-arrow{ stroke-width:1.5; }
+.proj-art-arrowhead{ stroke:none; }
+.proj-art-dot{ fill:var(--text-muted); }
+.proj-art-trend{ fill:none; stroke-width:1.5; }
+.proj-art-zigzag{ fill:none; stroke-width:1.5; stroke-linejoin:round; }
+.proj-art-zigzag--dashed{ stroke-dasharray:4,4; opacity:.6; }
+.proj-art-divider{ stroke:var(--text-muted); stroke-width:1; stroke-dasharray:3,3; }
+.proj-art-track{ fill:var(--bg-elevated); stroke:var(--line); stroke-width:1; }
+.proj-art-track-fill{ stroke:none; }
+
+/* ---------- Key-art SVG: one-off pieces (ContextIQ answer panel, Churn risk call) ---------- */
+.proj-art-answer-panel{
+  fill:var(--bg-elevated);
+  stroke-width:1.5;
+}
+.proj-art-answer-title{
+  font-family:'Fraunces',serif;
+  font-size:13px;
+}
+.proj-art-risk-label{
+  font-family:'Fraunces',serif;
+  font-size:18px;
+}
+
+@media (max-width:640px){
+  .proj-feature{ padding:20px; flex-direction:column; }
+  .proj-feature-title{ font-size:24px; }
+  .proj-feature-art{ order:1; width:100%; }
+  .proj-feature-copy{ order:0; }
+}
+
+/* ==========================================================================
+   Section navigator (.sec-nav) — shared collapsible left-edge overlay, used
+   on projects.html, experience.html and certifications.html. Built at
+   runtime by assets/js/section-nav.js from a single #sectionNav mount point
+   per page (see that file for the data-* contract) — no page-specific CSS
+   below, this is the one component all three pages share.
+
+   Both .sec-nav-collapsed and .sec-nav-expanded are independently
+   position:fixed with the SAME inset-inline-start/top/transform, so each is
+   always centred on the same viewport anchor point regardless of which is
+   visible or how tall the other is — expanding/collapsing only toggles
+   opacity on these fixed boxes, it never changes anything in normal
+   document flow, so it cannot reflow or shift the page. <nav class="sec-nav">
+   itself carries no layout styling — it holds no visual box of its own,
+   only the two fixed children.
+   ========================================================================== */
+.sec-nav-collapsed,
+.sec-nav-expanded{
+  position:fixed;
+  inset-inline-start:8px;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:90;
+}
+
+/* ---------- Collapsed (resting) pill ----------
+   Deliberately icon-only (no title text): at this site's content padding
+   (32px from the viewport edge up to the 1180px content max-width), there
+   is no width that both fits a legible truncated title AND guarantees zero
+   overlap with page text starting at the ~1100px reveal breakpoint below.
+   Position still updates live via .sec-nav-index-num (JS-driven). */
+.sec-nav-collapsed{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:7px;
+  padding:8px 4px;
+  border-radius:999px;
+  background:var(--bg-elevated);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
+  opacity:1;
+  transition:opacity .18s ease;
+}
+.sec-nav:hover .sec-nav-collapsed,
+.sec-nav:focus-within .sec-nav-collapsed{
+  opacity:0;
+}
+.sec-nav-glyph{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:2px;
+}
+.sec-nav-glyph span{
+  width:3px;
+  height:3px;
+  border-radius:999px;
+  background:var(--text-muted);
+}
+.sec-nav-index{
+  width:14px;
+  height:14px;
+  border-radius:999px;
+  background:var(--accent-soft);
+  border:1px solid var(--accent);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.sec-nav-index-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:8px;
+  font-weight:700;
+  color:var(--accent);
+  line-height:1;
+}
+
+/* ---------- Expanded panel ----------
+   Opens on hover after ~150ms, closes ~300ms after the cursor leaves —
+   implemented as asymmetric transition-delay in the two rules below rather
+   than JS timers, which gets "cancel the pending close if the cursor
+   returns" for free: re-entering before the close delay elapses just
+   re-matches the :hover/:focus-within rule and the still-pending opacity
+   target (1) never changed, so nothing visibly happens.
+   opacity + pointer-events (not visibility/display) keep the links in
+   normal tab order at all times, so :focus-within can actually be reached
+   by tabbing into them — visibility:hidden would remove them from tab
+   order and make that impossible. */
+.sec-nav-expanded{
+  display:flex;
+  flex-direction:column;
+  width:160px;
+  max-height:70vh;
+  overflow-y:auto;
+  padding:14px;
+  border-radius:14px;
+  background:var(--bg-elevated);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .2s ease .3s;
+}
+.sec-nav:hover .sec-nav-expanded,
+.sec-nav:focus-within .sec-nav-expanded{
+  opacity:1;
+  pointer-events:auto;
+  transition-delay:.15s;
+}
+.sec-nav-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  color:var(--accent);
+}
+.sec-nav-divider{
+  height:1px;
+  background:var(--line);
+  margin:10px 0;
+  flex:0 0 auto;
+}
+.sec-nav-list{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+.sec-nav-item{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:5px 4px;
+  border-radius:8px;
+  transition:background .15s ease;
+}
+.sec-nav-item:hover,
+.sec-nav-item:focus-visible{ background:var(--accent-soft); }
+.sec-nav-dot{
+  flex:0 0 auto;
+  width:6px;
+  height:6px;
+  border-radius:999px;
+  background:var(--text-muted);
+  transition:background .15s ease;
+}
+.sec-nav-item-title{
+  font-size:12.5px;
+  color:var(--text-muted);
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  transition:color .15s ease;
+}
+.sec-nav-item.is-active .sec-nav-dot{ background:var(--accent); }
+.sec-nav-item.is-active .sec-nav-item-title{ color:var(--text); }
+
+/* Below ~1100px these pages are short enough to just scroll — hide rather
+   than convert to a hamburger/drawer. */
+@media (max-width:1099px){
+  .sec-nav-collapsed,
+  .sec-nav-expanded{ display:none; }
+}

@@ -21,7 +21,7 @@
 }
 .hero-title span{ display:block; }
 .hero-title .name{ color:var(--text); }
-.hero-title .surname{ color:var(--text-muted); font-style:normal; }
+.hero-title .surname{ color:color-mix(in srgb, var(--text) 75%, var(--text-muted) 25%); font-style:normal; }
 
 .hero-tagline{
   color:var(--text-muted);

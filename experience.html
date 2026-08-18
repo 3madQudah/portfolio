@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="assets/css/pages.css">
 <script src="assets/js/theme.js" defer></script>
 <script src="assets/js/nav.js" defer></script>
+<script src="assets/js/cert-modal.js" defer></script>
 </head>
 <body data-theme="dark">
 
@@ -123,16 +124,32 @@
               </div>
             </div>
             <h3 class="tl-role">Machine Learning &amp; AI Trainee</h3>
-            <div class="tl-company">Al-Raja International Trade &amp; Investment Company</div>
-            <p class="tl-desc">A 60-hour hands-on training program in the company's machine learning programming department, covering Python, machine learning fundamentals, and applied AI techniques.</p>
+            <div class="tl-company">The Hope International Company</div>
+            <p class="tl-desc">A 60-hour hands-on training program in the company's machine learning department.</p>
+            <ul class="tl-list">
+              <li>Built end-to-end ML workflows in Python, applying OOP for reusable code.</li>
+              <li>Performed EDA and cleaning with Pandas and NumPy on raw datasets.</li>
+              <li>Created visual analyses using Matplotlib and Seaborn.</li>
+              <li>Engineered features through encoding and scaling, then trained and evaluated models.</li>
+              <li>Deployed models as Streamlit apps, containerized with Docker.</li>
+              <li>Managed version control through Git and GitHub.</li>
+            </ul>
+            <button type="button" class="btn btn-outline tl-cert-btn" data-pdf-trigger
+              data-pdf="assets/certificates/certificate_Emad Hamza Al-Qudah.pdf"
+              data-label="Python – Machine Learning – AI Certificate — The Hope International Company">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg>
+              View certificate
+            </button>
             <div class="tl-tags">
               <span class="tl-tag">Python</span>
               <span class="tl-tag">OOP</span>
-              <span class="tl-tag">Exploratory Data Analysis (EDA)</span>
-              <span class="tl-tag">Machine Learning</span>
+              <span class="tl-tag">Pandas &amp; NumPy</span>
+              <span class="tl-tag">Matplotlib &amp; Seaborn</span>
               <span class="tl-tag">Feature Engineering</span>
-              <span class="tl-tag">AI</span>
-              <span class="tl-tag">Data Visualization (Matplotlib and Seaborn)</span>
+              <span class="tl-tag">Machine Learning</span>
+              <span class="tl-tag">Streamlit</span>
+              <span class="tl-tag">Docker</span>
+              <span class="tl-tag">Git &amp; GitHub</span>
             </div>
           </div>
         </div>
@@ -153,14 +170,34 @@
             <div class="tl-role-note">"Zain Youth Intern" — official title on the experience letter</div>
             <div class="tl-company">Zain Jordan</div>
             <p class="tl-desc">Completed an internship in the Data Analytics &amp; AI department at Zain, Jordan's mobile telecom operator.</p>
-            <!-- No specific project bullets are documented yet for this internship. If concrete
-                 accomplishments become available, add them here as: <ul class="tl-list"><li>…</li></ul> -->
+            <ul class="tl-list">
+              <li>Delivered three end-to-end projects: salary analysis, mall footfall, and churn prediction.</li>
+              <li>Cleaned and analyzed each dataset with Pandas and NumPy, structuring pipelines with OOP.</li>
+              <li>Built visualizations with Matplotlib and Seaborn, and interactive dashboards in Tableau.</li>
+              <li>Applied encoding and scaling to prepare datasets for modeling.</li>
+              <li>Trained and evaluated models for regression and classification tasks.</li>
+              <li>Deployed via Streamlit dashboards and Flask APIs, tested with Postman and containerized with Docker.</li>
+              <li>Maintained all work under Git and GitHub version control.</li>
+            </ul>
+            <button type="button" class="btn btn-outline tl-cert-btn" data-pdf-trigger
+              data-pdf="assets/certificates/Emad AlQudah.pdf"
+              data-label="Experience Letter — Zain Jordan">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg>
+              View experience letter
+            </button>
             <div class="tl-tags">
-              <span class="tl-tag">Python (Pandas, Numpy, Matplotlib & Seaborn)</span>
-              <span class="tl-tag">Data Visualization (Tableau)</span>
+              <span class="tl-tag">Python</span>
+              <span class="tl-tag">OOP</span>
+              <span class="tl-tag">Pandas &amp; NumPy</span>
+              <span class="tl-tag">Matplotlib &amp; Seaborn</span>
+              <span class="tl-tag">Tableau</span>
+              <span class="tl-tag">Feature Engineering</span>
               <span class="tl-tag">Machine Learning</span>
-              <span class="tl-tag">GitHub</span>
+              <span class="tl-tag">Streamlit</span>
+              <span class="tl-tag">Flask</span>
+              <span class="tl-tag">Docker</span>
               <span class="tl-tag">Postman</span>
+              <span class="tl-tag">Git &amp; GitHub</span>
             </div>
           </div>
         </div>
@@ -189,5 +226,27 @@
     </div>
     <div class="footer-copy">© 2026 All Rights Reserved</div>
   </footer>
+
+  <!-- PDF MODAL: single reusable certification preview modal, populated via JS from each
+       [data-pdf-trigger] button's data-* attributes. See assets/js/cert-modal.js. -->
+  <div class="pdf-modal" id="pdfModal" role="dialog" aria-modal="true" aria-labelledby="pdfModalLabel">
+    <div class="pdf-modal-panel">
+      <div class="pdf-modal-header">
+        <span class="pdf-modal-label" id="pdfModalLabel">Certification Preview</span>
+        <a class="pdf-modal-download" id="pdfModalDownload" href="" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download PDF
+        </a>
+        <button type="button" class="pdf-modal-close" id="pdfModalClose" aria-label="Close preview">×</button>
+      </div>
+      <div class="pdf-modal-body" id="pdfModalBody">
+        <iframe class="pdf-modal-frame" id="pdfModalFrame" title=""></iframe>
+        <div class="pdf-modal-fallback" id="pdfModalFallback" hidden>
+          <p>Inline preview isn't supported in this browser.</p>
+          <a class="pdf-modal-fallback-link" id="pdfModalFallbackLink" href="" target="_blank" rel="noopener">Open PDF in new tab</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

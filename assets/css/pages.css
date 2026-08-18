@@ -556,22 +556,24 @@
   margin:14px 0 0;
 }
 .tl-list{
+  list-style:none;
+  padding-left:0;
   margin:14px 0 0;
   display:flex;
   flex-direction:column;
   gap:8px;
 }
 .tl-list li{
-  position:relative;
-  padding-left:18px;
+  display:flex;
+  align-items:flex-start;
+  gap:8px;
   font-size:14px;
-  line-height:1.55;
-  color:var(--text-muted);
+  line-height:1.6;
+  color:color-mix(in srgb, var(--text) 75%, var(--text-muted) 25%);
 }
 .tl-list li::before{
   content:'▸';
-  position:absolute;
-  left:0;
+  flex-shrink:0;
   color:var(--accent);
 }
 .tl-tags{
@@ -590,6 +592,13 @@
   border-radius:999px;
   padding:4px 10px;
 }
+.tl-cert-btn{
+  margin-top:16px;
+  padding:8px 14px;
+  font-size:11px;
+  border-radius:8px;
+}
+.tl-cert-btn svg{ width:14px; height:14px; flex-shrink:0; }
 
 @media (max-width:760px){
   .tl::before{ left:20px; }
@@ -601,6 +610,164 @@
     justify-self:stretch;
     max-width:none;
   }
+}
+
+/* ---------- Experience: certification PDF preview modal ---------- */
+.pdf-modal{
+  position:fixed;
+  inset:0;
+  z-index:300;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  background:rgba(0,0,0,0.92);
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .2s ease, visibility .2s ease;
+}
+.pdf-modal.open{
+  opacity:1;
+  visibility:visible;
+}
+.pdf-modal-panel{
+  width:min(920px, 100%);
+  height:min(86vh, 900px);
+  display:flex;
+  flex-direction:column;
+  background:var(--bg-elevated);
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  transform:scale(.98);
+  transition:transform .2s ease;
+}
+.pdf-modal.open .pdf-modal-panel{ transform:scale(1); }
+
+/* Header bar is intentionally a fixed dark toolbar regardless of site theme —
+   it overlays the document rather than sitting in the page's own surface, the
+   same reasoning as the always-dark .cert-lightbox backdrop above. */
+.pdf-modal-header{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:14px 16px;
+  background:#08090A;
+  border-bottom:1px solid rgba(255,255,255,0.09);
+  flex-shrink:0;
+}
+.pdf-modal-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:#DCE4E0;
+  margin-right:auto;
+}
+.pdf-modal-download{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  padding:8px 14px;
+  border-radius:999px;
+  background:#3ED598;
+  color:#08090A;
+  white-space:nowrap;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.pdf-modal-download svg{ width:13px; height:13px; flex-shrink:0; }
+.pdf-modal-download:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 20px rgba(62,213,152,0.3);
+}
+.pdf-modal-close{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:32px;
+  height:32px;
+  font-size:22px;
+  line-height:1;
+  color:#DCE4E0;
+  border-radius:8px;
+  transition:color .2s ease, background .2s ease;
+}
+.pdf-modal-close:hover, .pdf-modal-close:focus-visible{
+  color:#fff;
+  background:rgba(255,255,255,0.12);
+}
+.pdf-modal-body{
+  position:relative;
+  flex:1;
+  min-height:320px;
+  background:var(--bg-elevated);
+}
+.pdf-modal-frame{
+  width:100%;
+  height:100%;
+  border:0;
+  display:block;
+}
+.pdf-modal-fallback{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  padding:32px;
+  text-align:center;
+  background:var(--bg-elevated);
+}
+/* JS toggles the `hidden` attribute (not a class) to switch between the iframe
+   and the fallback panel — an unconditioned `display` above would otherwise
+   outrank the UA [hidden] rule and defeat that toggle, so restate it here at
+   higher specificity. */
+.pdf-modal-frame[hidden],
+.pdf-modal-fallback[hidden]{ display:none; }
+.pdf-modal-fallback p{
+  margin:0;
+  font-size:14px;
+  line-height:1.6;
+  color:var(--text-muted);
+  max-width:32ch;
+}
+.pdf-modal-fallback-link{
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  padding:12px 22px;
+  border-radius:10px;
+  background:var(--accent);
+  color:var(--bg);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.pdf-modal-fallback-link:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 20px var(--accent-soft);
+}
+
+@media (max-width:640px){
+  .pdf-modal{ padding:0; }
+  .pdf-modal-panel{
+    width:100%;
+    height:100%;
+    border-radius:0;
+  }
+  .pdf-modal-header{ padding:12px; gap:10px; }
+  .pdf-modal-label{ font-size:10px; }
+  .pdf-modal-download{ padding:7px 12px; }
+  .pdf-modal-fallback{ padding:24px; }
 }
 
 /* ---------- Projects: filter chips ---------- */

@@ -1,10 +1,11 @@
 /* project-video.js — click-to-play demo video for project key art.
    Generic pattern: any ".proj-video[data-video-src]" wrapper on the projects
-   page gets its poster content (currently always the key-art SVG) replaced
-   by a <video> once its ".proj-video-trigger" button is activated. Adding
-   this to another project card later needs no JS change — only the same
-   wrapper/button/data-video-src markup shape. For now only the ContextIQ
-   card in projects.html opts in. */
+   page gets its poster content (a logo/wordmark/play-button panel for
+   ContextIQ; any markup shape in general) replaced by a <video> once its
+   ".proj-video-trigger" button is activated. Adding this to another project
+   card later needs no JS change — only the same wrapper/button/
+   data-video-src markup shape. For now only the ContextIQ card in
+   projects.html opts in. */
 (function(){
   "use strict";
 

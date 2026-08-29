@@ -155,60 +155,19 @@
           </div>
 
           <div class="proj-feature-art">
-            <!-- Click-to-play demo video overlay: the SVG below stays the default
-                 poster; assets/js/project-video.js swaps it for a <video> on
-                 activating .proj-video-trigger. Generic pattern (keyed off
+            <!-- Click-to-play demo video poster: logo + wordmark + play button
+                 at rest. assets/js/project-video.js swaps the button's contents
+                 for a <video> on activation. Generic pattern (keyed off
                  [data-video-src]), but only ContextIQ opts in via this markup. -->
             <div class="proj-video" data-video-src="assets/video/contextiq.mp4">
-              <svg class="proj-feature-svg" viewBox="0 0 300 200" width="100%" role="img" aria-labelledby="ciqArtTitle ciqArtDesc">
-                <title id="ciqArtTitle">ContextIQ retrieval diagram</title>
-                <desc id="ciqArtDesc">Six source file formats — DOCX, PDF, MD, TXT, CSV, and SQL DB — feed into a central RAG engine, which produces an answer panel with citations.</desc>
-
-                <!-- Cubic beziers with horizontal control points at both ends (control
-                     point shares its endpoint's y), so each curve leaves its chip flat
-                     and arrives at the circle flat instead of converging at a sharp
-                     angle. Endpoints still sit 2px outside the r=26 RAG circle
-                     (r_eff=28), on the line from each chip toward the circle centre. -->
-                <g class="proj-art-connectors">
-                  <path class="proj-art-connector" d="M74,15 C88.8,15 88.8,74.9 103.6,74.9" fill="none" stroke="currentColor"/>
-                  <path class="proj-art-connector" d="M74,49 C86.1,49 86.1,78.4 98.2,78.4" fill="none" stroke="currentColor"/>
-                  <path class="proj-art-connector" d="M74,83 C82.03,83 82.03,89.5 90.05,89.5" fill="none" stroke="currentColor"/>
-                  <path class="proj-art-connector" d="M74,117 C82.03,117 82.03,110.5 90.05,110.5" fill="none" stroke="currentColor"/>
-                  <path class="proj-art-connector" d="M74,151 C86.1,151 86.1,121.6 98.2,121.6" fill="none" stroke="currentColor"/>
-                  <path class="proj-art-connector" d="M74,185 C88.8,185 88.8,125.1 103.6,125.1" fill="none" stroke="currentColor"/>
-                </g>
-
-                <g>
-                  <rect class="proj-art-chip" x="6" y="4" width="68" height="22" rx="4"/>
-                  <text class="proj-art-chip-label" x="40" y="15" text-anchor="middle" dominant-baseline="central">DOCX</text>
-                  <rect class="proj-art-chip" x="6" y="38" width="68" height="22" rx="4"/>
-                  <text class="proj-art-chip-label" x="40" y="49" text-anchor="middle" dominant-baseline="central">PDF</text>
-                  <rect class="proj-art-chip" x="6" y="72" width="68" height="22" rx="4"/>
-                  <text class="proj-art-chip-label" x="40" y="83" text-anchor="middle" dominant-baseline="central">MD</text>
-                  <rect class="proj-art-chip" x="6" y="106" width="68" height="22" rx="4"/>
-                  <text class="proj-art-chip-label" x="40" y="117" text-anchor="middle" dominant-baseline="central">TXT</text>
-                  <rect class="proj-art-chip" x="6" y="140" width="68" height="22" rx="4"/>
-                  <text class="proj-art-chip-label" x="40" y="151" text-anchor="middle" dominant-baseline="central">CSV</text>
-                  <rect class="proj-art-chip" x="6" y="174" width="68" height="22" rx="4"/>
-                  <text class="proj-art-chip-label" x="40" y="185" text-anchor="middle" dominant-baseline="central">SQL DB</text>
-                </g>
-
-                <circle class="proj-art-node" cx="116" cy="100" r="26" stroke="currentColor"/>
-                <text class="proj-art-node-label" x="116" y="100" text-anchor="middle" dominant-baseline="central" fill="currentColor">RAG</text>
-
-                <line class="proj-art-arrow" x1="144" y1="100" x2="162" y2="100" stroke="currentColor" fill="none"/>
-                <polygon class="proj-art-arrowhead" points="160,94 170,100 160,106" fill="currentColor"/>
-
-                <rect class="proj-art-answer-panel" x="182" y="74" width="110" height="52" rx="8" stroke="currentColor"/>
-                <text class="proj-art-answer-title" x="237" y="92" text-anchor="middle" dominant-baseline="central" fill="currentColor">Answer</text>
-                <text class="proj-art-muted-label" x="237" y="110" text-anchor="middle" dominant-baseline="central">+ citations</text>
-              </svg>
-
               <button type="button" class="proj-video-trigger" aria-label="Play ContextIQ demo video">
-                <span class="proj-video-circle" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><polygon points="8,5 19,12 8,19"/></svg>
+                <span class="proj-video-poster" aria-hidden="true">
+                  <img class="proj-video-logo" src="assets/img/contextiq-logo.svg" alt="">
+                  <span class="proj-video-wordmark">ContextIQ</span>
+                  <span class="proj-video-circle">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><polygon points="8,5 19,12 8,19"/></svg>
+                  </span>
                 </span>
-                <span class="proj-video-label">Watch demo</span>
               </button>
             </div>
           </div>

@@ -111,7 +111,9 @@
 
   <main>
     <section class="page-hero">
-      <h1 class="page-title">Projects</h1>
+      <h1 class="page-title proj-page-title">PROJECTS<span class="cert-heading-dot">.</span></span>
+      <span class="cert-heading-count" aria-hidden="true">5</span>
+      </h1>
       <p class="page-intro">A collection of my work in Machine Learning, RAG, AI and Data Science.</p>
     </section>
 
@@ -138,9 +140,9 @@
               <span class="proj-feature-tag">LLM</span>
               <span class="proj-feature-tag">Prompt Engineering</span>
               <span class="proj-feature-tag">Groq Model</span>
+              <span class="proj-feature-tag">LangChain</span>
               <span class="proj-feature-tag">Hybrid Search (Keyword (BM25) + Semantic(FAISS))</span>
               <span class="proj-feature-tag">Metadata Filtering</span>
-              <span class="proj-feature-tag">LangChain</span>
               <span class="proj-feature-tag">FastAPI</span>
               <span class="proj-feature-tag">CI/CD</span>
               <span class="proj-feature-tag">PostgreSQL</span>
@@ -155,18 +157,20 @@
           </div>
 
           <div class="proj-feature-art">
-            <!-- Click-to-play demo video poster: logo + wordmark + play button
-                 at rest. assets/js/project-video.js swaps the button's contents
-                 for a <video> on activation. Generic pattern (keyed off
-                 [data-video-src]), but only ContextIQ opts in via this markup. -->
+            <!-- Click-to-play demo video poster: a logo+wordmark lockup with a
+                 play button deliberately overlapping it (see .proj-video-circle
+                 in pages.css). assets/js/project-video.js swaps the trigger
+                 button's contents for a <video> on activation. Generic pattern
+                 (keyed off [data-video-src]), but only ContextIQ opts in via
+                 this markup. -->
             <div class="proj-video" data-video-src="assets/video/contextiq.mp4">
               <button type="button" class="proj-video-trigger" aria-label="Play ContextIQ demo video">
-                <span class="proj-video-poster" aria-hidden="true">
-                  <img class="proj-video-logo" src="assets/img/contextiq-logo.svg" alt="">
+                <span class="proj-video-lockup" aria-hidden="true">
+                  <span class="proj-video-logo" aria-hidden="true"></span>
                   <span class="proj-video-wordmark">ContextIQ</span>
-                  <span class="proj-video-circle">
-                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><polygon points="8,5 19,12 8,19"/></svg>
-                  </span>
+                </span>
+                <span class="proj-video-circle" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="8,5 19,12 8,19"/></svg>
                 </span>
               </button>
             </div>

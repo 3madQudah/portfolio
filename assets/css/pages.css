@@ -1011,10 +1011,19 @@
    it to fill that entire new line — i.e. exactly the "video full-width
    below the text" bug. Grid's percentage tracks are sized within the space
    already remaining after the gap is subtracted, so the same 58%/42% split
-   can't overflow or wrap this way. */
+   can't overflow or wrap this way.
+
+   Both tracks are wrapped in minmax(0, ...): every explicit grid track —
+   percentage ones included, not just fr — has an implicit automatic
+   minimum size equal to its content's min-content width unless clamped.
+   Without this, a long tag pill in .proj-feature-tags, or the unbreakable
+   logo+wordmark lockup (fixed-width logo + white-space:nowrap wordmark),
+   could force its column past its 58%/42% share; since neither .proj-card
+   nor .proj-feature clips overflow, that pushed the video panel's right
+   edge past the card's own border instead of shrinking to fit. */
 #proj-contextiq{
   display:grid;
-  grid-template-columns:58% 42%;
+  grid-template-columns:minmax(0, 58%) minmax(0, 42%);
   align-items:center;
   gap:36px;
 }
@@ -1041,6 +1050,12 @@
   position:relative;
   width:100%;
   max-width:520px; /* stays modest even on very wide screens, independent of the 42% column math above */
+  /* .proj-video is a normal-flow child of .proj-feature-art (not a direct
+     grid item of #proj-contextiq — justify-self would have no effect here),
+     so centre it the standard block-centering way: when the column is
+     wider than 520px, this centres the capped panel instead of leaving it
+     flush to the column's left edge. */
+  margin-inline:auto;
   aspect-ratio:16/10;
   border-radius:12px; /* matches .proj-feature's own card radius */
   border:1px solid rgba(255,255,255,0.09); /* matches --line's dark-mode value */
@@ -1122,7 +1137,7 @@
   .proj-feature-title{ font-size:24px; }
   .proj-feature-art{ order:1; width:100%; }
   .proj-feature-copy{ order:0; }
-  #proj-contextiq{ grid-template-columns:1fr; } /* single column at the same breakpoint every other card stacks at; copy stays first, art second, in DOM/source order */
+  #proj-contextiq{ grid-template-columns:minmax(0, 1fr); } /* single column at the same breakpoint every other card stacks at; copy stays first, art second, in DOM/source order */
   .proj-video-lockup{ gap:8px; }
   .proj-video-logo{ width:28px; height:28px; }
   .proj-video-wordmark{ font-size:20px; }

@@ -25,6 +25,8 @@
       video.setAttribute('controls', '');
       video.setAttribute('playsinline', '');
       video.setAttribute('preload', 'none');
+      video.setAttribute('controlslist', 'nodownload noplaybackrate'); // trims the default control set
+      video.setAttribute('disablepictureinpicture', '');
       video.setAttribute('aria-label', label);
       video.muted = true; // required for the immediate autoplay below to be allowed
       video.src = src;

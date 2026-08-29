@@ -983,82 +983,88 @@
 .proj-art-track{ fill:var(--bg-elevated); stroke:var(--line); stroke-width:1; }
 .proj-art-track-fill{ stroke:none; }
 
-/* ---------- Key-art SVG: one-off pieces (ContextIQ answer panel, Churn risk call) ---------- */
-.proj-art-answer-panel{
-  fill:var(--bg-elevated);
-  stroke-width:1.5;
-}
-.proj-art-answer-title{
-  font-family:'Fraunces',serif;
-  font-size:13px;
-}
+/* ---------- Key-art SVG: one-off pieces (Churn risk call) ---------- */
 .proj-art-risk-label{
   font-family:'Fraunces',serif;
   font-size:18px;
 }
 
 /* ==========================================================================
-   Project demo video (.proj-video) — click-to-play overlay on top of a
-   project's key-art SVG. Currently used only by the ContextIQ card; see
-   assets/js/project-video.js for the swap logic. No rules here touch
-   .proj-feature-art/.proj-feature-svg directly — everything is scoped under
-   .proj-video so the other four cards (which don't have this wrapper) are
-   unaffected.
+   Project demo video poster (.proj-video) — click-to-play panel that
+   replaces the ContextIQ key-art SVG. Shows the logo + wordmark + play
+   button at rest; assets/js/project-video.js swaps the trigger button's
+   contents for a <video> on activation. Currently used only by ContextIQ.
    ========================================================================== */
 .proj-video{
   position:relative;
-  /* Matches the key-art SVGs' shared viewBox (300x200 = 3:2) rather than the
-     video's own 16:10, so swapping the SVG poster for the <video> element
-     never changes this box's rendered height — the card cannot reflow. */
+  /* Matches the other cards' shared key-art viewBox (300x200 = 3:2), so this
+     card's art box stays the same size as its siblings and never changes
+     height when its content (poster -> video) is swapped. */
   aspect-ratio:300/200;
   border-radius:12px; /* matches .proj-feature's own card radius */
+  border:1px solid var(--line);
+  background:var(--bg-elevated); /* a surface a step lighter than --bg, same token every other card/panel on the site uses */
   overflow:hidden;
-}
-.proj-video .proj-feature-svg{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
 }
 .proj-video-trigger{
   position:absolute;
   inset:0;
   width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+}
+.proj-video-poster{
   display:flex;
   flex-direction:column;
   align-items:center;
-  justify-content:center;
-  gap:8px;
-  background:color-mix(in srgb, var(--bg) 35%, transparent);
-  cursor:pointer;
+  gap:18px;
+}
+.proj-video-logo{
+  width:60px;
+  height:60px;
+  opacity:.5;
+  filter:grayscale(1); /* muted/desaturated regardless of the logo file's own colours, so the play button stays the focal point */
+  transition:opacity .2s ease;
+}
+.proj-video-wordmark{
+  font-family:'Fraunces',serif;
+  font-weight:500;
+  font-size:16px; /* smaller than .proj-feature-title's 28px */
+  color:var(--text-muted);
+  opacity:.5;
+  transition:opacity .2s ease;
+}
+.proj-video-trigger:hover .proj-video-logo,
+.proj-video-trigger:focus-visible .proj-video-logo,
+.proj-video-trigger:hover .proj-video-wordmark,
+.proj-video-trigger:focus-visible .proj-video-wordmark{
+  opacity:.75;
 }
 .proj-video-circle{
-  width:52px;
-  height:52px;
+  width:56px;
+  height:56px;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
-  background:var(--accent-soft);
-  border:1.5px solid var(--accent);
-  color:var(--accent);
-  transition:transform .2s ease, box-shadow .2s ease;
+  /* "Semi-transparent light fill": built from --text rather than a literal
+     white, so it inverts correctly in light mode too — --text is near-white
+     in dark mode (a light fill, as specified) and near-black in light mode,
+     where an actually-white circle would have no contrast against the page. */
+  background:color-mix(in srgb, var(--text) 14%, transparent);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  color:var(--text);
+  transition:background .2s ease, transform .2s ease;
 }
 .proj-video-circle svg{ margin-left:2px; } /* optical centering of the play triangle */
 .proj-video-trigger:hover .proj-video-circle,
 .proj-video-trigger:focus-visible .proj-video-circle{
-  transform:scale(1.08);
-  box-shadow:0 10px 20px var(--accent-soft);
-}
-.proj-video-label{
-  font-family:'JetBrains Mono',monospace;
-  font-size:11px;
-  text-transform:uppercase;
-  letter-spacing:.08em;
-  color:var(--text);
-  background:color-mix(in srgb, var(--bg) 55%, transparent);
-  padding:4px 10px;
-  border-radius:999px;
+  background:color-mix(in srgb, var(--text) 22%, transparent);
+  transform:scale(1.05);
 }
 .proj-video-el{
   position:absolute;
@@ -1075,6 +1081,11 @@
   .proj-feature-title{ font-size:24px; }
   .proj-feature-art{ order:1; width:100%; }
   .proj-feature-copy{ order:0; }
+  .proj-video-poster{ gap:12px; }
+  .proj-video-logo{ width:44px; height:44px; }
+  .proj-video-wordmark{ font-size:14px; }
+  .proj-video-circle{ width:44px; height:44px; }
+  .proj-video-circle svg{ width:15px; height:15px; }
 }
 
 /* ==========================================================================

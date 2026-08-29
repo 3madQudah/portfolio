@@ -180,6 +180,14 @@
   margin:0;
   color:var(--text);
 }
+/* Projects page only: at line-height:1.02 the line box leaves almost no
+   room below the baseline, and Fraunces' capital J has an unusually deep
+   descender even in its default (non-"wonk") glyph form — the line box was
+   clipping it. .page-title is shared by experience.html/skills.html too
+   (identical class, no other selector to hang this off), so this is a
+   dedicated modifier on the Projects <h1> only; every other page's heading
+   keeps line-height:1.02 unchanged. */
+.proj-page-title{ line-height:1.15; }
 .page-intro{
   color:var(--text-muted);
   max-width:620px;

@@ -997,6 +997,79 @@
   font-size:18px;
 }
 
+/* ==========================================================================
+   Project demo video (.proj-video) — click-to-play overlay on top of a
+   project's key-art SVG. Currently used only by the ContextIQ card; see
+   assets/js/project-video.js for the swap logic. No rules here touch
+   .proj-feature-art/.proj-feature-svg directly — everything is scoped under
+   .proj-video so the other four cards (which don't have this wrapper) are
+   unaffected.
+   ========================================================================== */
+.proj-video{
+  position:relative;
+  /* Matches the key-art SVGs' shared viewBox (300x200 = 3:2) rather than the
+     video's own 16:10, so swapping the SVG poster for the <video> element
+     never changes this box's rendered height — the card cannot reflow. */
+  aspect-ratio:300/200;
+  border-radius:12px; /* matches .proj-feature's own card radius */
+  overflow:hidden;
+}
+.proj-video .proj-feature-svg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+}
+.proj-video-trigger{
+  position:absolute;
+  inset:0;
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  background:color-mix(in srgb, var(--bg) 35%, transparent);
+  cursor:pointer;
+}
+.proj-video-circle{
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--accent-soft);
+  border:1.5px solid var(--accent);
+  color:var(--accent);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.proj-video-circle svg{ margin-left:2px; } /* optical centering of the play triangle */
+.proj-video-trigger:hover .proj-video-circle,
+.proj-video-trigger:focus-visible .proj-video-circle{
+  transform:scale(1.08);
+  box-shadow:0 10px 20px var(--accent-soft);
+}
+.proj-video-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:var(--text);
+  background:color-mix(in srgb, var(--bg) 55%, transparent);
+  padding:4px 10px;
+  border-radius:999px;
+}
+.proj-video-el{
+  position:absolute;
+  inset:0;
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:12px; /* matches .proj-video's own radius; overflow:hidden above clips it either way */
+}
+
 @media (max-width:640px){
   .proj-feature{ padding:20px; flex-direction:column; }
   .proj-feature-title{ font-size:24px; }

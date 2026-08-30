@@ -17,6 +17,15 @@
    grid-template-columns/padding above always won the cascade. */
 @media (max-width:900px){
   .hero{ grid-template-columns:1fr; padding-top:44px; }
+  /* DOM order already reads copy → visual (index.html), so no order
+     property is needed to get eyebrow/title/description/buttons before
+     the lifecycle diagram — a previous order:-1 here (now removed, see
+     layout.css) was pulling the visual above the copy instead. This adds
+     extra room on top of the existing gap:48px row gap so the visual
+     doesn't sit tight against the buttons above it; desktop's side-by-side
+     columns are untouched since this rule only exists inside this
+     max-width:900px block. */
+  .hero-visual{ margin-top:16px; }
 }
 @media (max-width:420px){
   .hero{ padding:36px 18px 40px; }

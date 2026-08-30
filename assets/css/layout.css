@@ -192,7 +192,6 @@ a.dropdown-item:hover, a.dropdown-item:focus-visible{
    selector's base rule, at the same breakpoint values. Everything still
    here has no colliding declaration in pages.css, so it was never dead. */
 @media (max-width:900px){
-  .hero-visual{ order:-1; }
   .nav-links > a.nav-link, .nav-links > .dropdown-wrapper{ display:none; }
 }
 @media (max-width:640px){

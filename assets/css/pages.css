@@ -26,20 +26,56 @@
      columns are untouched since this rule only exists inside this
      max-width:900px block. */
   .hero-visual{ margin-top:16px; }
+
+  /* Centre the copy block as a whole — text-align inherits down into
+     .hero-title/.hero-tagline for free; .hero-actions is flex, so it
+     needs its own justify-content instead of relying on inheritance. */
+  .hero-copy{ text-align:center; }
+  .hero-tagline{ margin-inline:auto; } /* has its own max-width:460px — without this it'd stay left-hugging as a block even with text-align:center on its parent */
+  .hero-actions{ justify-content:center; }
+
+  /* "Emad Hamza Al-Qudah" (19 chars incl. spaces/hyphen) must stay on one
+     line down to a 390px viewport. At 390px the cascade resolves .hero's
+     horizontal padding to 18px each side (see the max-width:420px rule
+     below winning the shorthand), leaving 354px of available width.
+     Stepped down again from 26px to 22px (~15% reduction) — even a
+     generous ~0.6em-per-character estimate for Fraunces only comes to
+     ~251px at 22px — comfortable margin, so no further reduction was
+     needed. white-space:nowrap is the actual guarantee against wrapping;
+     the font-size is what keeps that safe rather than causing overflow.
+     (Calculated, not measured in a live browser — worth a real-device
+     check.) */
+  .hero-title{
+    font-size:22px;
+    line-height:.95;
+    white-space:nowrap;
+  }
 }
 @media (max-width:420px){
-  .hero{ padding:36px 18px 40px; }
+  /* Top value raised 36px -> 40px: the sticky navbar (70px tall, no
+     margin-bottom, and nothing else sits between it and <section
+     class="hero"> in flow — the hidden/position:fixed mobile nav panel
+     contributes zero flow height either way) was otherwise followed
+     directly by this padding as the only gap before the title. Left/right/
+     bottom (18px/40px) are unchanged — this is a padding-top-only
+     adjustment per the "padding, not margin-top on the title" instruction,
+     just expressed by editing one number in the existing shorthand rather
+     than splitting it into a separate longhand declaration. */
+  .hero{ padding:40px 18px 40px; }
 }
 .hero-title{
   font-family:'Fraunces',serif;
   font-weight:500;
-  font-size:clamp(44px,6vw,74px);
+  font-size:clamp(32px,4.5vw,56px);
   line-height:.98;
   margin:0 0 22px;
+  -webkit-hyphens:none;
+  hyphens:none; /* belt-and-suspenders alongside .hero-title-surname's white-space:nowrap below — some engines will still offer a break at a literal "-" per the Unicode line-breaking algorithm even under nowrap, so hyphenation is opted out of entirely on the whole title */
 }
-.hero-title span{ display:block; }
-.hero-title .name{ color:var(--text); }
-.hero-title .surname{ color:color-mix(in srgb, var(--text) 75%, var(--text-muted) 25%); font-style:normal; }
+.hero-title-surname{
+  color:var(--accent);
+  white-space:nowrap; /* keeps "Al‑Qudah" intact as one unit; it can still wrap as a whole onto its own line, it just can't split internally */
+}
 
 .hero-tagline{
   color:var(--text-muted);

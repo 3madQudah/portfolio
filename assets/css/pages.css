@@ -50,6 +50,15 @@
     line-height:.95;
     white-space:nowrap;
   }
+
+  /* Mobile nav panel (unrelated to the hero rules above — placed in this
+     existing query rather than a new one). .dropdown-label ("Resume") is
+     a plain block with no text-align of its own; every other item in the
+     panel centres via flex properties (justify-content), not text-align,
+     so the label needed its own rule. Scoped to .mobile-nav-inner so the
+     same .dropdown-label reused in the desktop Contact/More dropdowns is
+     untouched. */
+  .mobile-nav-inner .dropdown-label{ text-align:center; }
 }
 @media (max-width:420px){
   /* Top value raised 36px -> 40px: the sticky navbar (70px tall, no

@@ -140,8 +140,6 @@
   var mobileNavPanel = document.getElementById('mobileNavPanel');
 
   if(mobileMenuToggle && mobileNavPanel){
-    var mobileContactToggle = document.getElementById('mobileContactToggle');
-    var mobileContactDetails = document.getElementById('mobileContactDetails');
     var lastFocusedBeforeMenu = null;
 
     function focusableInMobilePanel(){
@@ -193,13 +191,6 @@
       document.body.style.overflow = '';
       document.removeEventListener('keydown', onMobileMenuKeydown);
 
-      /* Collapse the in-panel Contact accordion too, so the panel doesn't
-         reopen mid-scroll next time. */
-      if(mobileContactDetails){
-        mobileContactDetails.hidden = true;
-        if(mobileContactToggle){ mobileContactToggle.setAttribute('aria-expanded', 'false'); }
-      }
-
       if(lastFocusedBeforeMenu){
         lastFocusedBeforeMenu.focus();
         lastFocusedBeforeMenu = null;
@@ -214,23 +205,10 @@
       }
     });
 
-    /* Any real navigational link inside the panel closes it. The Contact
-       accordion toggle is deliberately excluded below — it's a <button>,
-       not a link, and reveals content in place rather than navigating. */
+    /* Any link inside the panel closes it (Projects/Experience/
+       Certifications/Skills, and the two Resume buttons). */
     mobileNavPanel.querySelectorAll('a[href]').forEach(function(link){
       link.addEventListener('click', closeMobileMenu);
     });
-
-    /* In-panel CONTACT accordion: a second, independent copy of the
-       phone/email/location/social content already in #contactPanel above,
-       laid out for a full-screen stack instead of an anchored popover.
-       This intentionally does not reuse openDropdown() — see file header. */
-    if(mobileContactToggle && mobileContactDetails){
-      mobileContactToggle.addEventListener('click', function(){
-        var opening = mobileContactDetails.hidden;
-        mobileContactDetails.hidden = !opening;
-        mobileContactToggle.setAttribute('aria-expanded', opening ? 'true' : 'false');
-      });
-    }
   }
 })();

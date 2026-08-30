@@ -12,6 +12,15 @@
   gap:48px;
   align-items:center;
 }
+/* Moved from layout.css: that file loads before this one, so its
+   .hero overrides at these same breakpoints were dead — pages.css's
+   grid-template-columns/padding above always won the cascade. */
+@media (max-width:900px){
+  .hero{ grid-template-columns:1fr; padding-top:44px; }
+}
+@media (max-width:420px){
+  .hero{ padding:36px 18px 40px; }
+}
 .hero-title{
   font-family:'Fraunces',serif;
   font-weight:500;
@@ -104,6 +113,15 @@
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:20px;
+}
+/* Moved from layout.css: same dead-rule issue as .hero above — that
+   file's .info-cards overrides at these breakpoints collided with
+   grid-template-columns/padding declared here, and always lost. */
+@media (max-width:760px){
+  .info-cards{ grid-template-columns:1fr; }
+}
+@media (max-width:420px){
+  .info-cards{ padding:0 18px; }
 }
 .card{
   background:var(--bg-elevated);

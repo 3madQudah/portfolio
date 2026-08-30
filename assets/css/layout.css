@@ -184,14 +184,16 @@ a.dropdown-item:hover, a.dropdown-item:focus-visible{
   text-transform:uppercase;
 }
 
-/* ---------- Responsive ---------- */
+/* ---------- Responsive ----------
+   .hero and .info-cards overrides used to live here too, but layout.css
+   loads before pages.css and both selectors are redefined there with equal
+   (0,1,0) specificity — the later-loaded pages.css declaration always won,
+   making those rules dead at every width. Moved to pages.css, next to each
+   selector's base rule, at the same breakpoint values. Everything still
+   here has no colliding declaration in pages.css, so it was never dead. */
 @media (max-width:900px){
-  .hero{ grid-template-columns:1fr; padding-top:44px; }
   .hero-visual{ order:-1; }
   .nav-links > a.nav-link, .nav-links > .dropdown-wrapper{ display:none; }
-}
-@media (max-width:760px){
-  .info-cards{ grid-template-columns:1fr; }
 }
 @media (max-width:640px){
   .footer{ flex-direction:column; text-align:center; }
@@ -200,8 +202,6 @@ a.dropdown-item:hover, a.dropdown-item:focus-visible{
   .navbar{ padding:0 12px; border-radius:16px; }
   .logo-text{ font-size:14px; }
   .btn{ padding:11px 16px; font-size:12px; }
-  .hero{ padding:36px 18px 40px; }
-  .info-cards{ padding:0 18px; }
   .dropdown-panel{ min-width:200px; right:-12px; }
 }
 

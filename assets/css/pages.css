@@ -16,7 +16,7 @@
    .hero overrides at these same breakpoints were dead — pages.css's
    grid-template-columns/padding above always won the cascade. */
 @media (max-width:900px){
-  .hero{ grid-template-columns:1fr; padding-top:44px; }
+  .hero{ grid-template-columns:1fr; padding: top 44px; }
   /* DOM order already reads copy → visual (index.html), so no order
      property is needed to get eyebrow/title/description/buttons before
      the lifecycle diagram — a previous order:-1 here (now removed, see
@@ -61,7 +61,7 @@
      adjustment per the "padding, not margin-top on the title" instruction,
      just expressed by editing one number in the existing shorthand rather
      than splitting it into a separate longhand declaration. */
-  .hero{ padding:40px 18px 40px; }
+  .hero{ padding:100px 18px 40px; }
 }
 .hero-title{
   font-family:'Fraunces',serif;

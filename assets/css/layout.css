@@ -103,6 +103,117 @@
 body:not([data-theme="light"]) .icon-sun{ display:block; }
 body[data-theme="light"] .icon-moon{ display:block; }
 
+/* ---------- Mobile menu hamburger (below 900px only) ----------
+   Same size/radius/border treatment as .theme-toggle, deliberately —
+   display:none here, overridden to display:flex only inside the
+   max-width:900px query below, so it's unreachable above that width
+   regardless of any JS state. */
+.hamburger{
+  display:none;
+  width:40px; height:40px;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  border-radius:10px;
+  border:1px solid var(--line);
+  color:var(--text);
+  transition:border-color .2s ease;
+  flex:0 0 auto;
+}
+.hamburger:hover{ border-color:var(--accent); }
+.hamburger-bar{
+  width:18px;
+  height:2px;
+  border-radius:2px;
+  background:currentColor;
+  transition:transform .25s ease, opacity .2s ease;
+}
+.hamburger.is-open .hamburger-bar:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+.hamburger.is-open .hamburger-bar:nth-child(2){ opacity:0; }
+.hamburger.is-open .hamburger-bar:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+
+/* ---------- Mobile navigation panel (below 900px only) ----------
+   Solid var(--bg) background per spec (not the navbar's translucent
+   surface) — a scrolling page behind a blurred/translucent full-screen
+   panel is unreadable, which is exactly the bug Part 3 below fixes for
+   the navbar itself; this panel avoids it from the start. Hidden by
+   default at every width via the [hidden] attribute (set/cleared by
+   nav.js); the .is-open display:flex override that actually shows it is
+   scoped inside the same max-width:900px query as the hamburger, so even
+   if the panel were somehow left "open" while the viewport is resized
+   past 900px, it still renders display:none unconditionally up there. */
+.mobile-nav-panel{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:200;
+  background:var(--bg);
+  overflow-y:auto;
+}
+.mobile-nav-inner{
+  min-height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  justify-content:center;
+  gap:8px;
+  max-width:420px;
+  margin:0 auto;
+  padding:96px 32px 48px;
+}
+.mobile-nav-link{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:44px;
+  padding:10px 12px;
+  font-family:'JetBrains Mono',monospace;
+  text-transform:uppercase;
+  font-size:15px;
+  letter-spacing:.09em;
+  color:var(--text-muted);
+  border-radius:10px;
+  transition:color .2s ease, background .2s ease;
+}
+.mobile-nav-link:hover, .mobile-nav-link:focus-visible{
+  color:var(--accent);
+  background:var(--accent-soft);
+}
+.mobile-nav-link[aria-current="page"]{ color:var(--accent); }
+.mobile-nav-link--secondary{ font-size:13px; }
+.mobile-nav-divider{ height:1px; background:var(--line); margin:14px 4px; flex:0 0 auto; }
+.mobile-contact-toggle{ width:100%; justify-content:center; margin-top:6px; }
+.mobile-contact-details{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  gap:4px;
+  margin-top:8px;
+}
+.mobile-contact-details .mobile-nav-link{
+  justify-content:flex-start;
+  gap:10px;
+}
+.mobile-contact-details .mobile-nav-link svg{ width:16px; height:16px; flex:0 0 auto; color:var(--accent); }
+.mobile-contact-static{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-height:44px;
+  padding:10px 12px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:13px;
+  color:var(--text-muted);
+}
+.mobile-contact-static svg{ width:16px; height:16px; flex:0 0 auto; color:var(--accent); }
+.mobile-contact-social{ display:flex; gap:10px; padding:8px 12px 0; justify-content:center; }
+
+@media (max-width:900px){
+  .hamburger{ display:flex; }
+  .mobile-nav-panel.is-open{ display:block; }
+}
+
 /* ---------- Dropdown panels ---------- */
 .dropdown-panel{
   position:absolute;

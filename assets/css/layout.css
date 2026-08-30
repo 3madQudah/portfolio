@@ -18,7 +18,13 @@
   padding:0 20px;
   border-radius:20px;
   border:1px solid var(--line);
-  background:color-mix(in srgb, var(--bg-elevated) 78%, transparent);
+  /* Was 78% opaque — on iOS Safari, scrolled page content showed through
+     enough to make navbar text unreadable. 96% keeps the same token-driven
+     approach (still var(--bg-elevated), still themeable) but is close
+     enough to solid that nothing meaningful bleeds through in any browser;
+     the backdrop-filter blur is kept, since at this opacity it still
+     softens the sliver of edge pixels that do show. */
+  background:color-mix(in srgb, var(--bg-elevated) 96%, transparent);
   backdrop-filter:blur(14px);
   -webkit-backdrop-filter:blur(14px);
   box-shadow:var(--shadow);

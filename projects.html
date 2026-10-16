@@ -143,7 +143,7 @@
   <main>
     <section class="page-hero">
       <h1 class="page-title proj-page-title">PROJECTS<span class="cert-heading-dot">.</span></span>
-      <span class="cert-heading-count" aria-hidden="true">5</span>
+      <span class="cert-heading-count" aria-hidden="true">6</span>
       </h1>
       <p class="page-intro">A collection of my work in Machine Learning, RAG, AI and Data Science.</p>
     </section>
@@ -151,6 +151,7 @@
     <section class="proj-section" aria-label="Projects">
       <div class="proj-filters" role="group" aria-label="Filter projects by category">
         <button type="button" class="chip is-active" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" class="chip" data-filter="agentic-ai" aria-pressed="false">Agentic AI</button>
         <button type="button" class="chip" data-filter="llm-rag" aria-pressed="false">LLM / RAG</button>
         <button type="button" class="chip" data-filter="machine-learning" aria-pressed="false">Machine Learning</button>
         <button type="button" class="chip" data-filter="healthcare-ai" aria-pressed="false">Healthcare AI</button>
@@ -158,7 +159,59 @@
 
       <div class="proj-grid">
 
-        <!-- 1. ContextIQ -->
+        <!-- 1. Sawti -->
+        <article class="proj-card proj-feature" id="proj-sawti" data-category="agentic-ai">
+          <div class="proj-feature-copy">
+            <span class="proj-feature-eyebrow">Agentic AI · Arabic / English call analysis</span>
+            <h3 class="proj-feature-title">Sawti</h3>
+            <p class="proj-feature-desc">An agent that reviews contact-center calls in Arabic, English and the code-switched speech between them. Every claim must quote the transcript verbatim, low-confidence calls pause for a human reviewer, and reviewer corrections become rules retrieved into later calls. Measured per language: rule memory lifts code-switched accuracy by +0.042, about 5× the run-to-run noise.</p>
+            <div class="proj-feature-tags">
+              <span class="proj-feature-tag">Python</span>
+              <span class="proj-feature-tag">LangGraph</span>
+              <span class="proj-feature-tag">Human-in-the-loop</span>
+              <span class="proj-feature-tag">LLM Grounding</span>
+              <span class="proj-feature-tag">Whisper</span>
+              <span class="proj-feature-tag">pyannote</span>
+              <span class="proj-feature-tag">Gemini</span>
+              <span class="proj-feature-tag">Qwen3-8B</span>
+              <span class="proj-feature-tag">QLoRA</span>
+              <span class="proj-feature-tag">vLLM</span>
+              <span class="proj-feature-tag">FastAPI</span>
+              <span class="proj-feature-tag">Celery</span>
+              <span class="proj-feature-tag">PostgreSQL</span>
+              <span class="proj-feature-tag">Langfuse</span>
+              <span class="proj-feature-tag">React</span>
+              <span class="proj-feature-tag">Docker</span>
+            </div>
+            <div class="proj-feature-actions">
+              <a class="proj-feature-btn proj-feature-btn--outline" href="https://github.com/3madQudah/sawti" target="_blank" rel="noopener">Source code</a>
+            </div>
+          </div>
+
+          <div class="proj-feature-art">
+            <!-- Click-to-play demo video poster: a wordmark lockup (no logo —
+                 two wordmarks with the play button centred between them, see
+                 .proj-video-lockup--split in pages.css) with a play button
+                 deliberately overlapping it (see .proj-video-circle in
+                 pages.css). assets/js/project-video.js swaps the trigger
+                 button's contents for a <video> on activation. Generic pattern
+                 (keyed off [data-video-src]); both Sawti and ContextIQ opt in
+                 via this markup. -->
+            <div class="proj-video" data-video-src="assets/video/sawti.mp4">
+              <button type="button" class="proj-video-trigger" aria-label="Play Sawti demo video">
+                <span class="proj-video-lockup proj-video-lockup--split" aria-hidden="true">
+                  <span class="proj-video-wordmark">Sawti</span>
+                  <span class="proj-video-wordmark proj-video-wordmark--ar" lang="ar" dir="rtl">صوتي</span>
+                </span>
+                <span class="proj-video-circle" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="8,5 19,12 8,19"/></svg>
+                </span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2. ContextIQ -->
         <article class="proj-card proj-feature" id="proj-contextiq" data-category="llm-rag">
           <div class="proj-feature-copy">
             <span class="proj-feature-eyebrow">Full-stack RAG platform</span>
@@ -192,8 +245,8 @@
                  play button deliberately overlapping it (see .proj-video-circle
                  in pages.css). assets/js/project-video.js swaps the trigger
                  button's contents for a <video> on activation. Generic pattern
-                 (keyed off [data-video-src]), but only ContextIQ opts in via
-                 this markup. -->
+                 (keyed off [data-video-src]); both Sawti and ContextIQ opt in
+                 via this markup. -->
             <div class="proj-video" data-video-src="assets/video/contextiq.mp4">
               <button type="button" class="proj-video-trigger" aria-label="Play ContextIQ demo video">
                 <span class="proj-video-lockup" aria-hidden="true">
@@ -208,7 +261,7 @@
           </div>
         </article>
 
-        <!-- 2. Salary Predictor -->
+        <!-- 3. Salary Predictor -->
         <article class="proj-card proj-feature" id="proj-salary-predictor" data-category="machine-learning">
           <div class="proj-feature-copy">
             <span class="proj-feature-eyebrow">End-to-end ML pipeline</span>
@@ -262,7 +315,7 @@
           </div>
         </article>
 
-        <!-- 3. MediCheck -->
+        <!-- 4. MediCheck -->
         <article class="proj-card proj-feature" id="proj-medicheck" data-category="healthcare-ai">
           <div class="proj-feature-copy">
             <span class="proj-feature-eyebrow">Drug information platform</span>
@@ -326,7 +379,7 @@
           </div>
         </article>
 
-        <!-- 4. Customer Churn Prediction -->
+        <!-- 5. Customer Churn Prediction -->
         <article class="proj-card proj-feature" id="proj-churn-prediction" data-category="machine-learning">
           <div class="proj-feature-copy">
             <span class="proj-feature-eyebrow">Classification and dashboard</span>
@@ -397,7 +450,7 @@
           </div>
         </article>
 
-        <!-- 5. Mall Footfall Intelligence -->
+        <!-- 6. Mall Footfall Intelligence -->
         <article class="proj-card proj-feature" id="proj-mall-footfall" data-category="machine-learning">
           <div class="proj-feature-copy">
             <span class="proj-feature-eyebrow">Time series forecasting</span>

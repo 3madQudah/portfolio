@@ -950,6 +950,13 @@
   padding:28px;
   border-radius:12px;
 }
+/* The filter chips in assets/js/nav.js toggle the `hidden` attribute (not a
+   class) on non-matching .proj-card elements — the unconditioned `display`
+   above (and the #proj-sawti/#proj-contextiq grid override further down)
+   would otherwise outrank the UA [hidden] rule, since author rules win any
+   specificity tie against the UA stylesheet, and defeat that toggle. Restate
+   it here at higher specificity, matching .pdf-modal-frame[hidden] above. */
+.proj-feature[hidden]{ display:none; }
 .proj-feature-copy{ flex:1 1 300px; }
 
 .proj-feature-eyebrow{
@@ -1069,10 +1076,11 @@
   font-size:18px;
 }
 
-/* ---------- ContextIQ only: widen the visual column to ~42% / text to ~58%
-   (every other card keeps the shared flex layout via .proj-feature-copy/
-   .proj-feature-art below). #proj-contextiq IS the .proj-feature element
-   (same <article>), so this ID-scoped override can't leak onto other cards.
+/* ---------- Sawti and ContextIQ only: widen the visual column to ~42% /
+   text to ~58% (every other card keeps the shared flex layout via
+   .proj-feature-copy/.proj-feature-art below). #proj-sawti and
+   #proj-contextiq each ARE the .proj-feature element (same <article>), so
+   this ID-scoped override can't leak onto other cards.
 
    This is display:grid rather than a flex-basis percentage split
    deliberately: .proj-feature has flex-wrap:wrap, and 58%+42% flex-basis
@@ -1093,19 +1101,29 @@
    could force its column past its 58%/42% share; since neither .proj-card
    nor .proj-feature clips overflow, that pushed the video panel's right
    edge past the card's own border instead of shrinking to fit. */
+#proj-sawti,
 #proj-contextiq{
   display:grid;
   grid-template-columns:minmax(0, 58%) minmax(0, 42%);
   align-items:center;
   gap:36px;
 }
+/* .proj-feature[hidden] above (0-2-0) restates [hidden] at high enough
+   specificity to beat the unadorned .proj-feature{ display:flex } rule
+   (0-1-0), but an ID selector always outranks any number of classes, so
+   these two cards' own display:grid above (1-0-0) still wins that fight —
+   restate [hidden] again here, scoped to just these two IDs, to close that
+   gap too. */
+#proj-sawti[hidden],
+#proj-contextiq[hidden]{ display:none; }
 
 /* ==========================================================================
    Project demo video poster (.proj-video) — click-to-play panel that
-   replaces the ContextIQ key-art SVG. Shows a logo+wordmark lockup with a
-   play button deliberately overlapping it (see .proj-video-circle) at rest;
-   assets/js/project-video.js swaps the trigger button's contents for a
-   <video> on activation. Currently used only by ContextIQ.
+   replaces the Sawti/ContextIQ key-art SVG. Shows a logo+wordmark (or, for
+   Sawti, a two-wordmark) lockup with a play button deliberately overlapping
+   it (see .proj-video-circle) at rest; assets/js/project-video.js swaps the
+   trigger button's contents for a <video> on activation. Currently used by
+   Sawti and ContextIQ.
 
    .proj-video is intentionally a fixed dark surface regardless of site
    theme, the same reasoning as .pdf-modal-header / .cert-lightbox above: a
@@ -1170,6 +1188,17 @@
   color:#DCE4E0; /* matches --text's dark-mode value */
   white-space:nowrap;
 }
+.proj-video-wordmark--ar{
+  font-family:'Geeza Pro','Noto Naskh Arabic',Tahoma,sans-serif;
+  font-weight:600;
+}
+/* Sawti has no logo mark: two wordmarks (Latin + Arabic) with the play
+   button (.proj-video-circle) centred between them rather than atop either
+   one — the wide gap is what keeps the circle from overlapping either
+   wordmark. */
+.proj-video-lockup--split{
+  gap:104px;
+}
 .proj-video-trigger:hover .proj-video-lockup,
 .proj-video-trigger:focus-visible .proj-video-lockup{
   opacity:.5;
@@ -1209,8 +1238,10 @@
   .proj-feature-title{ font-size:24px; }
   .proj-feature-art{ order:1; width:100%; }
   .proj-feature-copy{ order:0; }
+  #proj-sawti,
   #proj-contextiq{ grid-template-columns:minmax(0, 1fr); } /* single column at the same breakpoint every other card stacks at; copy stays first, art second, in DOM/source order */
   .proj-video-lockup{ gap:8px; }
+  .proj-video-lockup--split{ gap:72px; }
   .proj-video-logo{ width:28px; height:28px; }
   .proj-video-wordmark{ font-size:20px; }
   .proj-video-circle{ width:56px; height:56px; }
